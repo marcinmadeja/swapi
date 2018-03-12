@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
+    "bluebird": "^3.5.1",
     "classnames": "^2.2.5",
     "jss": "^9.8.0",
     "lodash": "^4.17.5",
-    "material-ui": "^0.20.0",
+    "material-ui": "^1.0.0-beta.36",
     "material-ui-icons": "^1.0.0-beta.36",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
