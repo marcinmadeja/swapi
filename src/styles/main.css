@@ -1,0 +1,13 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  padding: 90px 0 0;
+  font-family: 'Roboto', sans-serif;
+  background: #EDF2F6;
+}
