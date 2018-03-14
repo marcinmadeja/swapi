@@ -8,6 +8,8 @@ import UsersList from './UsersList/UsersList';
 const DrawerUsers = ({
   toggleExtend,
   usersList,
+  usersListLast,
+  usersListFriends,
 }) => {
   console.log('usersList', usersList);
 
@@ -24,16 +26,21 @@ const DrawerUsers = ({
 
       <UsersList usersList={usersList} title="Friends" />
 
-      <UsersList usersList={usersList} title="Last added" />
+      <UsersList usersList={usersListLast} title="Last added" />
 
-      <UsersList usersList={usersList} title="Random users" />
+      <UsersList usersList={usersListFriends} title="Random users" />
     </Fragment>
   );
 };
 
 const mapStateToProps = state => {
-  const { usersList } = state.usersList;
-  return { usersList };
+  const {
+    usersList,
+    usersListLast,
+    usersListFriends,
+  } = state.usersList;
+
+  return { usersList, usersListLast, usersListFriends };
 };
 
 export default connect(mapStateToProps)(DrawerUsers);
