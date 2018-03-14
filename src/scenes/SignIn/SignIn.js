@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { requestUser } from 'actions/user';
-import { requestUserList } from 'actions/usersList';
+import { requestUsersList } from 'actions/usersList';
 
 import { withStyles } from 'material-ui/styles';
 import TextField from 'material-ui/TextField';
@@ -27,7 +27,7 @@ class SignIn extends Component {
 
   componentDidMount() {
     this.props.requestUser();
-    this.props.requestUserList();
+    this.props.requestUsersList();
   }
 
   onButtonClick() {
@@ -71,7 +71,7 @@ SignIn.propTypes = {
   classes: PropTypes.object.isRequired,
   errors: PropTypes.bool,
   requestUser: PropTypes.func.isRequired,
-  requestUserList: PropTypes.func.isRequired,
+  requestUsersList: PropTypes.func.isRequired,
 };
 
 SignIn.defaultProps = {
@@ -80,5 +80,5 @@ SignIn.defaultProps = {
 
 export default compose(
   withStyles(styles, { withTheme: true }),
-  connect(null, { requestUser, requestUserList }),
+  connect(null, { requestUser, requestUsersList }),
 )(SignIn);

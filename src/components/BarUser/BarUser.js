@@ -19,7 +19,7 @@ class BarUser extends Component {
         <IconButton className={classes.avatarButton}>
           <Avatar
             alt="Adelle Charles"
-            src={userService.getImg('large', user)}
+            src={userService.getImg(user, 'large')}
             className={classes.avatar}
           />
         </IconButton>
