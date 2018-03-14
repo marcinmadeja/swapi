@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 import SignIn from 'scenes/SignIn/SignIn';
 import Loading from 'components/Loading/Loading';
-import { AlertWarning } from 'components/alerts';
 import 'normalize.css';
 import 'styles/main.css';
 import App from './App';

@@ -15,9 +15,7 @@ export const requestUser = () => (
 
     api.user.signInUser()
       .then(user => {
-        console.log('user', user);
         dispatch(entrySuccess(user));
-        return user;
       })
       .catch(err => {
         dispatch(entryFailure());
