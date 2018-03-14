@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { toggleUsers } from 'actions/drawers';
 import AppDrawer from 'components/AppDrawer/AppDrawer';
-import SidebarNav from 'components/SidebarNav/SidebarNav';
+import SidebarUsersList from 'components/SidebarUsersList/SidebarUsersList';
 
 class LeftDrawer extends Component {
   render() {
@@ -11,7 +11,7 @@ class LeftDrawer extends Component {
         anchor="right"
         extend={this.props.extendDrawerUsers}
       >
-        right
+        <SidebarUsersList toggleExtend={this.props.toggleUsers} />
       </AppDrawer>
     );
   }

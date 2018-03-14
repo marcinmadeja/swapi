@@ -27,4 +27,17 @@ export default class UserApi extends MainApi {
 
     return apiResponse;
   }
+
+  getUsersList() {
+    const source = this.getCancelSource();
+
+    const apiResponse = this.axios
+      .get(`${this.APP_URL}?results=50`, {
+        cancelToken: source.token,
+      })
+      .then(this.returnData)
+      .then(this.returnUserList);
+
+    return apiResponse;
+  }
 }
