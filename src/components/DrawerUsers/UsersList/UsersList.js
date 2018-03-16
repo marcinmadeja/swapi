@@ -6,7 +6,7 @@ import { withStyles } from 'material-ui/styles';
 import UserItem from './UserItem/UserItem';
 import { ListTitle } from './UsersList.styles';
 
-const DISPLAY_USERS_LIMIT = 4;
+const DISPLAY_USERS_LIMIT = 5;
 
 const UsersList = ({
   theme,
