@@ -17,7 +17,7 @@ export const requestUser = () => (
       .then(user => {
         dispatch(entrySuccess(user));
       })
-      .catch(err => {
+      .catch(error => {
         dispatch(entryFailure());
       });
   }
