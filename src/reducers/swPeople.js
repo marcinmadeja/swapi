@@ -2,18 +2,32 @@ import { SW_PEOPLE_REQUEST, SW_PEOPLE_SUCCESS, SW_PEOPLE_FAILURE } from 'actions
 
 const initialState = {
   peopleData: null,
+  requestData: null,
+  list: null,
   pending: false,
   errors: false,
 };
 
+function updateInfoAndList(payload) {
+  const list = payload.results;
+  // delete payload.results;
+  return {
+    list,
+    requestData: payload,
+    peopleData: payload,
+    pending: false,
+    errors: false,
+  };
+}
+
 export default (state = initialState, action) => {
   switch (action.type) {
     case SW_PEOPLE_REQUEST:
-      return { peopleData: null, pending: true, errors: false };
+      return { ...state, pending: true, errors: false };
     case SW_PEOPLE_SUCCESS:
-      return { peopleData: action.payload, pending: false, errors: false };
+      return updateInfoAndList(action.payload);
     case SW_PEOPLE_FAILURE:
-      return { peopleData: null, pending: false, errors: true };
+      return { ...state, pending: false, errors: true };
     default:
       return state;
   }

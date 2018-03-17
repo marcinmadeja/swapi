@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { requestSwPeople } from 'actions/swPeople';
+import { requestSwFilms } from 'actions/swFilms';
 
 import { AlertWarning, AlertStandard } from 'components/alerts';
 import PeopleCardsList from 'components/PeopleCardsList/PeopleCardsList';
@@ -8,6 +9,7 @@ import PeopleCardsList from 'components/PeopleCardsList/PeopleCardsList';
 class Home extends Component {
   componentDidMount() {
     this.props.requestSwPeople();
+    this.props.requestSwFilms();
   }
 
   render() {
@@ -29,4 +31,4 @@ const mapStateToProps = state => {
   return { peopleData, pending, errors };
 };
 
-export default connect(mapStateToProps, { requestSwPeople })(Home);
+export default connect(mapStateToProps, { requestSwPeople, requestSwFilms })(Home);

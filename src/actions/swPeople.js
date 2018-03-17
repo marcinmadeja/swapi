@@ -11,8 +11,8 @@ export const requestSwPeople = () => (
     dispatch(entryRequest());
 
     api.swapi.getPeople()
-      .then(peopleData => {
-        dispatch(entrySuccess(peopleData));
+      .then(response => {
+        dispatch(entrySuccess(response));
       })
       .catch(error => {
         dispatch(entryFailure());
