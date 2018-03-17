@@ -15,7 +15,7 @@ const templateStandard = {
 };
 
 const mainTheme = createMuiTheme(templateStandard);
-
+console.log('mainTheme', mainTheme);
 
 export const gutter = '15px';
 export const containerWidth = '1300px';

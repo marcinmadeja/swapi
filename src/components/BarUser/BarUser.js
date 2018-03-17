@@ -13,7 +13,7 @@ import { styles } from './BarUser.styles';
 class BarUser extends Component {
   render() {
     const { classes, user } = this.props;
-    console.log('user', user);
+
     return (
       <Fragment>
         <IconButton className={classes.avatarButton}>

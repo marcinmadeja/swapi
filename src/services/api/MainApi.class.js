@@ -25,6 +25,7 @@ export default class MainApi {
 
   returnData(response) {
     const { data } = response;
+
     if (response.status === 200) {
       return data;
     } else if (response.status === 204) {

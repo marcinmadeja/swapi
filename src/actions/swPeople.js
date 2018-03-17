@@ -12,7 +12,7 @@ export const requestSwPeople = () => (
 
     api.swapi.getPeople()
       .then(peopleData => {
-        dispatch(entrySuccess());
+        dispatch(entrySuccess(peopleData));
       })
       .catch(error => {
         dispatch(entryFailure());

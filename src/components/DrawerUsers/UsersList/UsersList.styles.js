@@ -1,15 +1,16 @@
 import styled, { css } from 'styled-components';
+import mainTheme from 'constants/theme';
 
 export const ListTitle = styled.div`
 	display: flex;
 	align-items: center;
 	height: 0;
 
-	border: 1px solid ${props => props.theme.palette.borderColor};
+	border: 1px solid ${mainTheme.palette.borderColor};
 	border-width: 1px 0;
 	padding-left: 12px;
 
-	color: ${props => props.theme.palette.primary.main};
+	color: ${mainTheme.palette.primary.main};
 	font-size: 14px;
 	font-weight: 500;
 	letter-spacing: 0.6px;

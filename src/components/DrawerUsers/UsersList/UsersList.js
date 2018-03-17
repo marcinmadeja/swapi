@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { withStyles } from 'material-ui/styles';
 
 import UserItem from './UserItem/UserItem';
 import { ListTitle } from './UsersList.styles';
@@ -9,7 +8,6 @@ import { ListTitle } from './UsersList.styles';
 const DISPLAY_USERS_LIMIT = 5;
 
 const UsersList = ({
-  theme,
   usersList,
   title,
   extendDrawerUsers,
@@ -19,7 +17,7 @@ const UsersList = ({
 
   return (
     <div>
-      <ListTitle theme={theme} open={extendDrawerUsers}>{title}</ListTitle>
+      <ListTitle open={extendDrawerUsers}>{title}</ListTitle>
       {usersToDisplay.map((user, index) => <UserItem key={index} user={user} />)}
     </div>
   );
@@ -32,5 +30,4 @@ const mapStateToProps = state => {
 
 export default compose(
   connect(mapStateToProps),
-  withStyles(null, { withTheme: true }),
 )(UsersList);

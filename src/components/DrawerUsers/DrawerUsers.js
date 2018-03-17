@@ -11,8 +11,6 @@ const DrawerUsers = ({
   usersListLast,
   usersListFriends,
 }) => {
-  console.log('usersList', usersList);
-
   return (
     <Fragment>
       <List component="nav">

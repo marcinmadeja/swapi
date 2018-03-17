@@ -42,14 +42,13 @@ class SignIn extends Component {
 
   render() {
     const {
-      theme,
       classes,
       errors,
     } = this.props;
 
     return (
-      <ComponentContainer theme={theme}>
-        <FormContainer theme={theme} autoComplete="off">
+      <ComponentContainer>
+        <FormContainer autoComplete="off">
           <TextField
             label="Login"
             className={classes.input}
@@ -73,7 +72,6 @@ class SignIn extends Component {
 }
 
 SignIn.propTypes = {
-  theme: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
   errors: PropTypes.bool,
   requestUser: PropTypes.func.isRequired,
@@ -87,6 +85,6 @@ SignIn.defaultProps = {
 };
 
 export default compose(
-  withStyles(styles, { withTheme: true }),
+  withStyles(styles),
   connect(null, { requestUser, requestUsersList, requestUsersListLastAdded, requestUsersListFriends }),
 )(SignIn);

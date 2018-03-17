@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import mainTheme from 'constants/theme';
 
 export const styles = {
   input: {
@@ -12,15 +13,15 @@ export const ComponentContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 100vh;
-  background: ${props => props.theme.palette.background.default};
+  background: ${mainTheme.palette.background.default};
 `;
 
 export const FormContainer = styled.form`
   width: 400px;
   padding: 35px 30px;
-  background: ${props => props.theme.palette.background.paper}
-  border: 1px solid ${props => props.theme.palette.borderColor};
-  border-radius: ${props => props.theme.borderRadius};
+  background: ${mainTheme.palette.background.paper}
+  border: 1px solid ${mainTheme.palette.borderColor};
+  border-radius: ${mainTheme.borderRadius};
 `;
 
 export const AlertContainer = styled.div`
