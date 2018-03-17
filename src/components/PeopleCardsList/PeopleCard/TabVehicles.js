@@ -1,9 +1,14 @@
 import React from 'react';
+import { Film } from './TabFilms.styles';
 
-const TabVehicles = () => {
+const TabVehicles = ({
+  userData: { vehicles },
+}) => {
+  if (!vehicles.length) return 'no vehicle';
+
   return (
     <div>
-      Vehicles
+      {vehicles.map(vehicle => <Film key={vehicle}>{vehicle}</Film>)}
     </div>
   );
 };

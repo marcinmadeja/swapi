@@ -59,7 +59,6 @@ class PeopleCard extends Component {
     } = this.props;
 
     const { currentTab } = this.state;
-    console.log('user', user);
 
     return (
       <Col md={4}>

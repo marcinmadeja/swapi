@@ -1,9 +1,14 @@
 import React from 'react';
+import { Film } from './TabFilms.styles';
 
-const TabStarships = () => {
+const TabStarships = ({
+  userData: { starships },
+}) => {
+  if (!starships.length) return 'no starships';
+
   return (
     <div>
-      Starships
+      {starships.map(starship => <Film key={starship}>{starship}</Film>)}
     </div>
   );
 };
