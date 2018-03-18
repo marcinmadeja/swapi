@@ -1,10 +1,9 @@
 import React from 'react';
-import { swapiService, api } from 'services';
+import { swapiService } from 'services';
 import { AlertStandard } from 'components/alerts';
 import { Content } from './TabContent.styles';
 
 const TabContent = ({
-  name,
   render,
   isActive = false,
   urlList = [],

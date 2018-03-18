@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateSwFilms } from 'actions/swUpdate';
+import { updateSwFilms, updateSwVehicles, updateSwStarships } from 'actions/swUpdate';
 import { compose } from 'redux';
 import { Col } from 'components/grid';
 
@@ -75,7 +75,6 @@ class PeopleCard extends Component {
             <Tab className={classes.tabRoot} label="Vehicles" icon={<DirectionsCarIcon />} />
           </Tabs>
 
-
           <SwipeableViews
             index={currentTab}
             onChangeIndex={this.handleChangeIndex}
@@ -83,7 +82,6 @@ class PeopleCard extends Component {
             <TabContent forceLoaded render={() => (<TabBio userData={user} />)} />
 
             <TabContent
-              name={user.name}
               isActive={currentTab === 1}
               urlList={user.films}
               loadedData={this.props.filmsList}
@@ -91,9 +89,22 @@ class PeopleCard extends Component {
               render={() => (<TabFilms userData={user} />)}
             />
 
-            <TabContent render={() => (<TabStarships userData={user} />)} />
+            <TabContent
+              isActive={currentTab === 2}
+              urlList={user.starships}
+              loadedData={this.props.starshipsList}
+              updateData={this.props.updateSwStarships}
+              render={() => (<TabStarships userData={user} />)}
+            />
 
-            <TabContent render={() => (<TabVehicles userData={user} />)} />
+            <TabContent
+              isActive={currentTab === 3}
+              urlList={user.vehicles}
+              loadedData={this.props.vehiclesList}
+              updateData={this.props.updateSwVehicles}
+              render={() => (<TabVehicles userData={user} />)}
+            />
+
           </SwipeableViews>
         </Card>
       </Col>
@@ -103,12 +114,17 @@ class PeopleCard extends Component {
 
 const mapStateToProps = state => {
   const filmsList = state.swFilms.list;
+  const starshipsList = state.swStarships.list;
+  const vehiclesList = state.swVehicles.list;
+
   return {
     filmsList,
+    starshipsList,
+    vehiclesList,
   };
 };
 
 export default compose(
-  connect(mapStateToProps, { updateSwFilms }),
+  connect(mapStateToProps, { updateSwFilms, updateSwVehicles, updateSwStarships }),
   withStyles(styles),
 )(PeopleCard);
