@@ -1,19 +1,45 @@
 import { SW_FILMS_REQUEST, SW_FILMS_SUCCESS, SW_FILMS_FAILURE } from 'actions/swFilms';
+import { SW_FILMS_UPDATE } from 'actions/swUpdate';
+import { swapiService } from 'services';
 
 const initialState = {
-  filmsData: null,
+  requestData: null,
+  list: [],
   pending: false,
   errors: false,
 };
 
+function updateInfoAndList(payload) {
+  const list = payload.results;
+  delete payload.results;
+
+  return {
+    list,
+    requestData: payload,
+    pending: false,
+    errors: false,
+  };
+}
+
+function updateList(payload, state) {
+  const list = swapiService.removeDuplicate([...state.list, ...payload]);
+
+  return {
+    ...state,
+    list,
+  };
+}
+
 export default (state = initialState, action) => {
   switch (action.type) {
     case SW_FILMS_REQUEST:
-      return { filmsData: null, pending: true, errors: false };
+      return { ...state, pending: true, errors: false };
     case SW_FILMS_SUCCESS:
-      return { filmsData: action.payload, pending: false, errors: false };
+      return updateInfoAndList(action.payload);
     case SW_FILMS_FAILURE:
-      return { filmsData: null, pending: false, errors: true };
+      return { ...state, pending: false, errors: true };
+    case SW_FILMS_UPDATE:
+      return updateList(action.payload, state);
     default:
       return state;
   }

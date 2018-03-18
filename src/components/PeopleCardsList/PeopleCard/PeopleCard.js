@@ -1,24 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { updateSwFilms } from 'actions/swUpdate';
+import { compose } from 'redux';
 import { Col } from 'components/grid';
 
 import SwipeableViews from 'react-swipeable-views';
 import { withStyles } from 'material-ui/styles';
-import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
+import Card from 'material-ui/Card';
 import Tabs, { Tab } from 'material-ui/Tabs';
 import PhoneIcon from 'material-ui-icons/Phone';
-import FavoriteIcon from 'material-ui-icons/Favorite';
-import PersonPinIcon from 'material-ui-icons/PersonPin';
-import HelpIcon from 'material-ui-icons/Help';
-import ShoppingBasket from 'material-ui-icons/ShoppingBasket';
-import ThumbDown from 'material-ui-icons/ThumbDown';
-import ThumbUp from 'material-ui-icons/ThumbUp';
-import Typography from 'material-ui/Typography';
 
-import MenuIcon from 'material-ui-icons/Menu';
-import HomeIcon from 'material-ui-icons/Home';
 import PersonIcon from 'material-ui-icons/Person';
-import PersonAddIcon from 'material-ui-icons/PersonAdd';
-import MapIcon from 'material-ui-icons/Map';
 import DirectionsCarIcon from 'material-ui-icons/DirectionsCar';
 import LocalAirportIcon from 'material-ui-icons/LocalAirport';
 import LocalMoviesIcon from 'material-ui-icons/LocalMovies';
@@ -53,7 +45,6 @@ class PeopleCard extends Component {
 
   render() {
     const {
-      theme,
       classes,
       user,
     } = this.props;
@@ -89,9 +80,19 @@ class PeopleCard extends Component {
             index={currentTab}
             onChangeIndex={this.handleChangeIndex}
           >
-            <TabContent render={() => (<TabBio userData={user} />)} />
-            <TabContent render={() => (<TabFilms userData={user} />)} />
+            <TabContent forceLoaded render={() => (<TabBio userData={user} />)} />
+
+            <TabContent
+              name={user.name}
+              isActive={currentTab === 1}
+              urlList={user.films}
+              loadedData={this.props.filmsList}
+              updateData={this.props.updateSwFilms}
+              render={() => (<TabFilms userData={user} />)}
+            />
+
             <TabContent render={() => (<TabStarships userData={user} />)} />
+
             <TabContent render={() => (<TabVehicles userData={user} />)} />
           </SwipeableViews>
         </Card>
@@ -100,4 +101,14 @@ class PeopleCard extends Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(PeopleCard);
+const mapStateToProps = state => {
+  const filmsList = state.swFilms.list;
+  return {
+    filmsList,
+  };
+};
+
+export default compose(
+  connect(mapStateToProps, { updateSwFilms }),
+  withStyles(styles),
+)(PeopleCard);

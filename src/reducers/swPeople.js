@@ -1,20 +1,19 @@
 import { SW_PEOPLE_REQUEST, SW_PEOPLE_SUCCESS, SW_PEOPLE_FAILURE } from 'actions/swPeople';
 
 const initialState = {
-  peopleData: null,
   requestData: null,
-  list: null,
+  list: [],
   pending: false,
   errors: false,
 };
 
 function updateInfoAndList(payload) {
   const list = payload.results;
-  // delete payload.results;
+  delete payload.results;
+
   return {
     list,
     requestData: payload,
-    peopleData: payload,
     pending: false,
     errors: false,
   };

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { requestSwPeople } from 'actions/swPeople';
-import { requestSwFilms } from 'actions/swFilms';
 
 import { AlertWarning, AlertStandard } from 'components/alerts';
 import PeopleCardsList from 'components/PeopleCardsList/PeopleCardsList';
@@ -9,26 +8,25 @@ import PeopleCardsList from 'components/PeopleCardsList/PeopleCardsList';
 class Home extends Component {
   componentDidMount() {
     this.props.requestSwPeople();
-    this.props.requestSwFilms();
   }
 
   render() {
     const {
-      peopleData,
+      list,
       pending,
       errors,
     } = this.props;
 
     if (pending) return <AlertStandard msg="Loading data" progressBar />;
     if (errors) return <AlertWarning msg="There was an error" />;
-    if (!peopleData) return null;
-    return <PeopleCardsList users={peopleData.results} />;
+    if (!list.length) return null;
+    return <PeopleCardsList users={list} />;
   }
 }
 
 const mapStateToProps = state => {
-  const { peopleData, pending, errors } = state.swPeople;
-  return { peopleData, pending, errors };
+  const { list, pending, errors } = state.swPeople;
+  return { list, pending, errors };
 };
 
-export default connect(mapStateToProps, { requestSwPeople, requestSwFilms })(Home);
+export default connect(mapStateToProps, { requestSwPeople })(Home);
