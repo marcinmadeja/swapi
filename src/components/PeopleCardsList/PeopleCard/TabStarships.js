@@ -1,15 +1,25 @@
 import React from 'react';
-import { Film } from './TabFilms.styles';
+import { List, ListItem } from './PeopleCard.styles';
+
+const Starship = ({ url, loadedData }) => {
+  const filmDetails = loadedData.find(details => details.url === url);
+  if (!filmDetails) return null;
+  return (
+    <ListItem>{filmDetails.name}</ListItem>
+  );
+};
+
 
 const TabStarships = ({
-  userData: { starships },
+  urlList,
+  loadedData,
 }) => {
-  if (!starships.length) return 'no starships';
+  if (!urlList.length) return 'no starships';
 
   return (
-    <div>
-      {starships.map(starship => <Film key={starship}>{starship}</Film>)}
-    </div>
+    <List>
+      {urlList.map(url => <Starship key={url} url={url} loadedData={loadedData} />)}
+    </List>
   );
 };
 

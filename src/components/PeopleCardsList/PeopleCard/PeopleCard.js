@@ -86,7 +86,7 @@ class PeopleCard extends Component {
               urlList={user.films}
               loadedData={this.props.filmsList}
               updateData={this.props.updateSwFilms}
-              render={() => (<TabFilms userData={user} />)}
+              render={(urlList, loadedData) => (<TabFilms urlList={urlList} loadedData={loadedData} />)}
             />
 
             <TabContent
@@ -94,7 +94,7 @@ class PeopleCard extends Component {
               urlList={user.starships}
               loadedData={this.props.starshipsList}
               updateData={this.props.updateSwStarships}
-              render={() => (<TabStarships userData={user} />)}
+              render={(urlList, loadedData) => (<TabStarships urlList={urlList} loadedData={loadedData} />)}
             />
 
             <TabContent
@@ -102,7 +102,7 @@ class PeopleCard extends Component {
               urlList={user.vehicles}
               loadedData={this.props.vehiclesList}
               updateData={this.props.updateSwVehicles}
-              render={() => (<TabVehicles userData={user} />)}
+              render={(urlList, loadedData) => (<TabVehicles urlList={urlList} loadedData={loadedData} userData={user} />)}
             />
 
           </SwipeableViews>

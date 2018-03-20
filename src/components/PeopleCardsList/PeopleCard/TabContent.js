@@ -18,7 +18,7 @@ const TabContent = ({
 
   return (
     <Content>
-      {render()}
+      {render(urlList, loadedData)}
     </Content>
   );
 };

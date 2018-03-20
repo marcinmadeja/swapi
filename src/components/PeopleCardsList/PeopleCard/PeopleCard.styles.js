@@ -47,3 +47,12 @@ export const UserName = styled.h4`
   font-size: 18px;
   font-weight: 500;
 `;
+
+export const List = styled.ul`
+
+`;
+
+export const ListItem = styled.li`
+  line-height: 1.8;
+  letter-spacing: 0.7px;
+`;
