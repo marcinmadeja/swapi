@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { toggleMenu } from 'actions/drawers';
+import { withRouter } from 'react-router-dom';
 import AppDrawer from 'components/AppDrawer/AppDrawer';
 import SidebarNav from 'components/SidebarNav/SidebarNav';
 
@@ -25,4 +26,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { toggleMenu })(LeftDrawer);
+export default withRouter(connect(mapStateToProps, { toggleMenu })(LeftDrawer));
