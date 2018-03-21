@@ -13,6 +13,7 @@ import Planets from 'scenes/Planets/Planets';
 import Vehicles from 'scenes/Vehicles/Vehicles';
 import Starships from 'scenes/Starships/Starships';
 import Films from 'scenes/Films/Films';
+import FilmDetails from 'scenes/FilmDetails/FilmDetails';
 
 class App extends Component {
   render() {
@@ -23,7 +24,9 @@ class App extends Component {
 
           <Row>
             <Switch>
+              <Route path="/films/:id" component={FilmDetails} />
               <Route path="/films" component={Films} />
+
               <Route path="/People" component={People} />
               <Route path="/Species" component={Species} />
               <Route path="/Planets" component={Planets} />

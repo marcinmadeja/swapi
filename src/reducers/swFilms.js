@@ -9,8 +9,10 @@ const initialState = {
   errors: false,
 };
 
+const sortFilms = (a, b) => (a.episode_id >= b.episode_id ? 1 : -1);
+
 function updateInfoAndList(payload) {
-  const list = payload.results;
+  const list = payload.results.sort(sortFilms);
   delete payload.results;
 
   return {
@@ -22,7 +24,9 @@ function updateInfoAndList(payload) {
 }
 
 function updateList(payload, state) {
-  const list = swapiService.removeDuplicate([...state.list, ...payload]);
+  const list = swapiService
+    .removeDuplicate([...state.list, ...payload])
+    .sort(sortFilms);
 
   return {
     ...state,
