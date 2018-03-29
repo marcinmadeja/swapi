@@ -24,7 +24,7 @@ class App extends Component {
 
           <Row>
             <Switch>
-              <Route path="/films/:id" component={FilmDetails} />
+              <Route path="/films/:name/:id" component={FilmDetails} />
               <Route path="/films" component={Films} />
 
               <Route path="/People" component={People} />

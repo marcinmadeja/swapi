@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { swapiService } from 'services';
+
 import { withStyles } from 'material-ui/styles';
 import Card, { CardContent, CardMedia, CardActions } from 'material-ui/Card';
 import IconButton from 'material-ui/IconButton';
@@ -20,8 +22,13 @@ const Film = ({
     episode_id,
     title,
     opening_crawl,
+    url,
   },
 }) => {
+  const seoName = swapiService.formatUrlName(title);
+  const filmId = swapiService.getIdFromLink(url);
+  const filmUrl = `/films/${seoName}/${filmId}`;
+
   return (
     <Card className={classes.card}>
       <CardMedia image={FilmsImage[`film${episode_id}`]} title={title} />
@@ -36,7 +43,7 @@ const Film = ({
             <FavoriteIcon />
           </IconButton>
 
-          <IconButton component={props => <Link to={`/films/${episode_id}`} {...props} />} aria-label="Link">
+          <IconButton component={props => <Link to={filmUrl} {...props} />} aria-label="Link">
             <LinkIcon />
           </IconButton>
         </CardActions>
