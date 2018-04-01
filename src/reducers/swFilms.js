@@ -30,6 +30,16 @@ function updateInfoAndList(payload, state) {
   };
 }
 
+function updateListByDetails(payload, state) {
+  const newState = updateList(payload, state);
+
+  return {
+    ...newState,
+    pendingDetails: false,
+    errorsDetails: false,
+  };
+}
+
 function updateList(payload, state) {
   const list = swapiService
     .removeDuplicate([...state.list, ...payload])
@@ -49,12 +59,16 @@ export default (state = initialState, action) => {
       return updateInfoAndList(action.payload, state);
     case SW_FILMS_FAILURE:
       return { ...state, pending: false, errors: true };
+
+    case SW_FILMS_SINGLE_REQUEST:
+      return { ...state, pendingDetails: true, errorsDetails: false };
+    case SW_FILMS_SINGLE_FAILURE:
+      return { ...state, pendingDetails: false, errorsDetails: true };
+    case SW_FILMS_SINGLE_SUCCESS:
+      return updateListByDetails(action.payload, state);
+
     case SW_FILMS_UPDATE:
       return updateList(action.payload, state);
-    case SW_FILMS_SINGLE_REQUEST:
-      return { ...state, pending: true, errors: false };
-    case SW_FILMS_SINGLE_FAILURE:
-      return { ...state, pending: false, errors: true };
     default:
       return state;
   }
