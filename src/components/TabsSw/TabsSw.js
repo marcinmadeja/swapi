@@ -6,9 +6,12 @@ import {
   updateSwStarships,
   updateSwSpecies,
   updateSwPlanets,
+  updateSwFilms,
 } from 'actions/swUpdate';
 import { compose } from 'redux';
 import SwipeableViews from 'react-swipeable-views';
+import { swapiService } from 'services';
+
 import { withStyles } from 'material-ui/styles';
 import Tabs, { Tab } from 'material-ui/Tabs';
 
@@ -40,6 +43,7 @@ class TabsSw extends Component {
       case 'vehicles': return this.props.vehiclesList;
       case 'species': return this.props.speciesList;
       case 'planets': return this.props.planetsList;
+      case 'films': return this.props.filmsList;
       default: return null;
     }
   }
@@ -51,6 +55,7 @@ class TabsSw extends Component {
       case 'vehicles': return this.props.updateSwVehicles;
       case 'species': return this.props.updateSwSpecies;
       case 'planets': return this.props.updateSwPlanets;
+      case 'films': return this.props.updateSwFilms;
       default: return () => {};
     }
   }
@@ -67,6 +72,7 @@ class TabsSw extends Component {
         return this.rendererPlanets;
       case 'vehicles':
         return this.rendererVehicles;
+      case 'films':
       default: return this.renderDefault;
     }
   }
@@ -77,9 +83,10 @@ class TabsSw extends Component {
       const filmDetails = loadedData.find(details => details.url === url);
       if (!filmDetails) return null;
       const { name, birth_year } = filmDetails;
+      const link = swapiService.generateLink(url, name, 'people');
 
       return (
-        <ListItem key={url}>
+        <ListItem key={url} to={link}>
           {name}<br />
           birth year: <strong>{birth_year}</strong>
         </ListItem>
@@ -93,9 +100,10 @@ class TabsSw extends Component {
       const filmDetails = loadedData.find(details => details.url === url);
       if (!filmDetails) return null;
       const { name, classification, language } = filmDetails;
+      const link = swapiService.generateLink(url, name, 'species');
 
       return (
-        <ListItem key={url}>
+        <ListItem key={url} to={link}>
           {name} (classification: {classification})<br />
           language: <strong>{language}</strong>
         </ListItem>
@@ -109,9 +117,10 @@ class TabsSw extends Component {
       const filmDetails = loadedData.find(details => details.url === url);
       if (!filmDetails) return null;
       const { name, model } = filmDetails;
+      const link = swapiService.generateLink(url, name, 'vehicles');
 
       return (
-        <ListItem key={url}>
+        <ListItem key={url} to={link}>
           {name}<br />
           model: <strong>{model}</strong>
         </ListItem>
@@ -125,9 +134,10 @@ class TabsSw extends Component {
       const filmDetails = loadedData.find(details => details.url === url);
       if (!filmDetails) return null;
       const { name, model, manufacturer } = filmDetails;
+      const link = swapiService.generateLink(url, name, 'starships');
 
       return (
-        <ListItem key={url}>
+        <ListItem key={url} to={link}>
           {name}<br />
           model: <strong>{model}</strong><br />
           manufacturer: <strong>{manufacturer}</strong>
@@ -143,9 +153,10 @@ class TabsSw extends Component {
       const filmDetails = loadedData.find(details => details.url === url);
       if (!filmDetails) return null;
       const { name, population, climate } = filmDetails;
+      const link = swapiService.generateLink(url, name, 'planets');
 
       return (
-        <ListItem key={url}>
+        <ListItem key={url} to={link}>
           {name} (population: {population})<br />
           climate: <strong>{climate}</strong>
         </ListItem>
@@ -229,6 +240,7 @@ const actions = {
   updateSwVehicles,
   updateSwSpecies,
   updateSwPlanets,
+  updateSwFilms,
 };
 
 export default compose(

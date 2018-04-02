@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import mainTheme from 'constants/theme';
 
 export const styles = (theme) => ({
   card: {
@@ -32,11 +34,19 @@ export const DefaultTab = styled.div`
   letter-spacing: 0.7px;
 `;
 
-export const ListItem = styled.div`
+export const ListItem = styled(Link)`
   margin-bottom: 25px;
   font-size: 18px;
   line-height: 1.5;
   letter-spacing: 0.5px;
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  transition: 0.33s all;
+
+  &:hover {
+    color: ${mainTheme.palette.primary.main};
+  }
 
   strong {
     font-size: 16px;

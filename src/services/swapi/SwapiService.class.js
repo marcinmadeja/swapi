@@ -20,4 +20,24 @@ export default class SwapiService {
     const results = regex.exec(link) || ['0'];
     return parseInt(results[0].split('/').join(''), 10);
   }
+
+  generateLink(link, name, type) {
+    if (!link || !name || !type) throw new Error('You need to pass details and type argument');
+    const pageSeo = this.getMainPageLink(type);
+    const nameSeo = this.formatUrlName(name);
+    const id = this.getIdFromLink(link);
+
+    return `/${pageSeo}/${nameSeo}/${id}`;
+  }
+
+  getMainPageLink(type) {
+    switch (type) {
+      case 'people': return 'people';
+      case 'starships': return 'starships';
+      case 'vehicles': return 'vehicles';
+      case 'species': return 'species';
+      case 'planets': return 'planets';
+      default: throw new Error('No page');
+    }
+  }
 }
