@@ -20,12 +20,6 @@ const Text = styled.div`
   }
 `;
 
-const Crawl = styled.div`
-  font-size: 16px;
-  line-height: 1.4;
-  letter-spacing: 0.5px;
-`;
-
 const Info = ({
   title,
   producer,
@@ -53,8 +47,6 @@ const Info = ({
           {releaseDate}
         </p>
       </Text>
-
-      <Crawl>{openingCrawl}</Crawl>
     </div>
   );
 };

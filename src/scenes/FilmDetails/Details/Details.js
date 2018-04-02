@@ -7,7 +7,7 @@ class Details extends Component {
   render() {
     const details = this.props.details;
     if (!details) return false;
-    console.log('details', details);
+
     const tabsList = [
       {
         name: 'Crawl',
@@ -52,7 +52,10 @@ class Details extends Component {
           openingCrawl={details.opening_crawl}
         />
 
-        <TabsSw tabsList={tabsList} />
+        <TabsSw
+          tabsList={tabsList}
+          details={details}
+        />
       </Fragment>
     );
   }

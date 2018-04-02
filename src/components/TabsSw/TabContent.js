@@ -8,6 +8,7 @@ const TabContent = ({
   urlList = [],
   loadedData = [],
   updateData,
+  render,
 }) => {
   function getNotLoadedData() {
     if (!Array.isArray(urlList) || !Array.isArray(loadedData)) return [];
@@ -21,11 +22,7 @@ const TabContent = ({
     return <AlertStandard msg="Loading data" progressBar />;
   }
 
-  return (
-    <div>
-      {name}
-    </div>
-  );
+  return render(urlList, loadedData);
 };
 
 export default TabContent;

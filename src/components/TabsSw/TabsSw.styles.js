@@ -16,3 +16,29 @@ export const styles = (theme) => ({
     boxShadow: theme.shadows[2],
   },
 });
+
+export const Main = styled.div`
+  margin-bottom: 20px;
+`;
+
+export const TabWrapper = styled.div`
+  height: 400px;
+  overflow: auto;
+`;
+
+export const DefaultTab = styled.div`
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: 0.7px;
+`;
+
+export const ListItem = styled.div`
+  margin-bottom: 25px;
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+
+  strong {
+    font-size: 16px;
+  }
+`;

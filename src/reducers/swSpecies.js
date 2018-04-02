@@ -1,4 +1,4 @@
-import { SW_PLANETS_UPDATE } from 'actions/swUpdate';
+import { SW_SPECIES_UPDATE } from 'actions/swUpdate';
 import { swapiService } from 'services';
 
 const initialState = {
@@ -7,18 +7,6 @@ const initialState = {
   pending: false,
   errors: false,
 };
-
-function updateInfoAndList(payload) {
-  const list = payload.results;
-  delete payload.results;
-
-  return {
-    list,
-    requestData: payload,
-    pending: false,
-    errors: false,
-  };
-}
 
 function updateList(payload, state) {
   const list = swapiService.removeDuplicate([...state.list, ...payload]);
@@ -31,7 +19,7 @@ function updateList(payload, state) {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case SW_PLANETS_UPDATE:
+    case SW_SPECIES_UPDATE:
       return updateList(action.payload, state);
     default:
       return state;
