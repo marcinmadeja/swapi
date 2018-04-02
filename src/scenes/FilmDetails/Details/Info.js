@@ -20,6 +20,15 @@ const Text = styled.div`
   }
 `;
 
+const Main = styled.div`
+  position: absolute;
+  top: -15px;
+  left: 0;
+  transform: translateY(-100%);
+  background: #fff;
+  padding: 10px 20px 0;
+`;
+
 const Info = ({
   title,
   producer,
@@ -28,7 +37,7 @@ const Info = ({
   openingCrawl,
 }) => {
   return (
-    <div>
+    <Main>
       <Title>{title}</Title>
 
       <Text>
@@ -47,7 +56,7 @@ const Info = ({
           {releaseDate}
         </p>
       </Text>
-    </div>
+    </Main>
   );
 };
 

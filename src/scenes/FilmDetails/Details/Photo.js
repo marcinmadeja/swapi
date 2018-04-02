@@ -9,7 +9,6 @@ const Img = styled.img`
 `;
 
 const Photo = ({ episodeId }) => {
-  console.log('episodeId', episodeId);
   if (!episodeId) return null;
 
   return (

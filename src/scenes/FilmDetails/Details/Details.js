@@ -1,7 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import TabsSw from 'components/TabsSw/TabsSw';
 import Photo from './Photo';
 import Info from './Info';
+import { Main, InfoContainer } from './Details.styles';
 
 class Details extends Component {
   render() {
@@ -41,22 +42,24 @@ class Details extends Component {
     ];
 
     return (
-      <Fragment>
+      <Main>
         <Photo episodeId={details.episode_id} />
 
-        <Info
-          title={details.title}
-          producer={details.producer}
-          releaseDate={details.release_date}
-          director={details.director}
-          openingCrawl={details.opening_crawl}
-        />
+        <InfoContainer>
+          <Info
+            title={details.title}
+            producer={details.producer}
+            releaseDate={details.release_date}
+            director={details.director}
+            openingCrawl={details.opening_crawl}
+          />
+        </InfoContainer>
 
         <TabsSw
           tabsList={tabsList}
           details={details}
         />
-      </Fragment>
+      </Main>
     );
   }
 }
