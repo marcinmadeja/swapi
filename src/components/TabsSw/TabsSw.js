@@ -73,16 +73,18 @@ class TabsSw extends Component {
       case 'vehicles':
         return this.rendererVehicles;
       case 'films':
-      default: return this.renderDefault;
+        return this.rendererFilms;
+      default:
+        return this.renderDefault;
     }
   }
 
   rendererPeople(urlList, loadedData) {
     if (!urlList || !loadedData) return null;
     return urlList.map(url => {
-      const filmDetails = loadedData.find(details => details.url === url);
-      if (!filmDetails) return null;
-      const { name, birth_year } = filmDetails;
+      const detail = loadedData.find(details => details.url === url);
+      if (!detail) return null;
+      const { name, birth_year } = detail;
       const link = swapiService.generateLink(url, name, 'people');
 
       return (
@@ -97,9 +99,9 @@ class TabsSw extends Component {
   rendererSpecies(urlList, loadedData) {
     if (!urlList || !loadedData) return null;
     return urlList.map(url => {
-      const filmDetails = loadedData.find(details => details.url === url);
-      if (!filmDetails) return null;
-      const { name, classification, language } = filmDetails;
+      const detail = loadedData.find(details => details.url === url);
+      if (!detail) return null;
+      const { name, classification, language } = detail;
       const link = swapiService.generateLink(url, name, 'species');
 
       return (
@@ -114,9 +116,9 @@ class TabsSw extends Component {
   rendererVehicles(urlList, loadedData) {
     if (!urlList || !loadedData) return null;
     return urlList.map(url => {
-      const filmDetails = loadedData.find(details => details.url === url);
-      if (!filmDetails) return null;
-      const { name, model } = filmDetails;
+      const detail = loadedData.find(details => details.url === url);
+      if (!detail) return null;
+      const { name, model } = detail;
       const link = swapiService.generateLink(url, name, 'vehicles');
 
       return (
@@ -131,9 +133,9 @@ class TabsSw extends Component {
   rendererStarships(urlList, loadedData) {
     if (!urlList || !loadedData) return null;
     return urlList.map(url => {
-      const filmDetails = loadedData.find(details => details.url === url);
-      if (!filmDetails) return null;
-      const { name, model, manufacturer } = filmDetails;
+      const detail = loadedData.find(details => details.url === url);
+      if (!detail) return null;
+      const { name, model, manufacturer } = detail;
       const link = swapiService.generateLink(url, name, 'starships');
 
       return (
@@ -150,9 +152,9 @@ class TabsSw extends Component {
   rendererPlanets(urlList, loadedData) {
     if (!urlList || !loadedData) return null;
     return urlList.map(url => {
-      const filmDetails = loadedData.find(details => details.url === url);
-      if (!filmDetails) return null;
-      const { name, population, climate } = filmDetails;
+      const detail = loadedData.find(details => details.url === url);
+      if (!detail) return null;
+      const { name, population, climate } = detail;
       const link = swapiService.generateLink(url, name, 'planets');
 
       return (
@@ -164,8 +166,25 @@ class TabsSw extends Component {
     });
   }
 
-  renderDefault() {
-    return <DefaultTab>{this.props.details.opening_crawl}</DefaultTab>;
+  rendererFilms(urlList, loadedData) {
+    if (!urlList || !loadedData) return null;
+    return urlList.map(url => {
+      const detail = loadedData.find(details => details.url === url);
+      if (!detail) return null;
+      const { title, release_date } = detail;
+      const link = swapiService.generateLink(url, title, 'films');
+
+      return (
+        <ListItem key={url} to={link}>
+          {title}<br />
+          release date <strong>{release_date}</strong>
+        </ListItem>
+      );
+    });
+  }
+
+  renderDefault(content) {
+    return <DefaultTab>{content}</DefaultTab>;
   }
 
   render() {
@@ -201,8 +220,8 @@ class TabsSw extends Component {
           {tabsList.map((tab, key) => (
             <TabWrapper key={tab.name}>
               <TabContent
-                name={tab.name}
                 urlList={tab.list}
+                content={tab.content}
                 isActive={currentTab === key}
                 loadedData={this.getLoadedList(tab.type)}
                 updateData={this.getUpdateData(tab.type)}

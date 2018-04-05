@@ -11,7 +11,10 @@ import People from 'scenes/People/People';
 import Species from 'scenes/Species/Species';
 import Planets from 'scenes/Planets/Planets';
 import Vehicles from 'scenes/Vehicles/Vehicles';
+
 import Starships from 'scenes/Starships/Starships';
+import StarshipDetails from 'scenes/StarshipDetails/StarshipDetails';
+
 import Films from 'scenes/Films/Films';
 import FilmDetails from 'scenes/FilmDetails/FilmDetails';
 
@@ -27,11 +30,14 @@ class App extends Component {
               <Route path="/films/:name/:id" component={FilmDetails} />
               <Route path="/films" component={Films} />
 
-              <Route path="/People" component={People} />
-              <Route path="/Species" component={Species} />
-              <Route path="/Planets" component={Planets} />
-              <Route path="/Vehicles" component={Vehicles} />
-              <Route path="/Starships" component={Starships} />
+              <Route path="/people" component={People} />
+              <Route path="/species" component={Species} />
+              <Route path="/planets" component={Planets} />
+              <Route path="/vehicles" component={Vehicles} />
+
+              <Route path="/starships/:name/:id" component={StarshipDetails} />
+              <Route path="/starships" component={Starships} />
+
               <Route path="/" component={Home} />
             </Switch>
           </Row>

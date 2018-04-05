@@ -3,10 +3,10 @@ import { swapiService } from 'services';
 import { AlertStandard } from 'components/alerts';
 
 const TabContent = ({
-  name,
   isActive = false,
-  urlList = [],
+  urlList,
   loadedData = [],
+  content,
   updateData,
   render,
 }) => {
@@ -22,6 +22,9 @@ const TabContent = ({
     return <AlertStandard msg="Loading data" progressBar />;
   }
 
+  if (Array.isArray(urlList) && !urlList.length) return <AlertStandard msg="No data" />;
+
+  if (!urlList) return render(content);
   return render(urlList, loadedData);
 };
 

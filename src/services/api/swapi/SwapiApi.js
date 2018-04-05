@@ -49,6 +49,18 @@ export default class SwapiApi extends MainApi {
     return apiResponse;
   }
 
+  getStarships() {
+    const source = this.getCancelSource();
+
+    const apiResponse = this.axios
+      .get(`${this.APP_URL}starships/?format=json`, {
+        cancelToken: source.token,
+      })
+      .then(this.returnData);
+
+    return apiResponse;
+  }
+
   getSpecies() {
     const source = this.getCancelSource();
 

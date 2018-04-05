@@ -37,6 +37,7 @@ export default class SwapiService {
       case 'vehicles': return 'vehicles';
       case 'species': return 'species';
       case 'planets': return 'planets';
+      case 'films': return 'films';
       default: throw new Error('No page');
     }
   }

@@ -12,7 +12,7 @@ class Details extends Component {
     const tabsList = [
       {
         name: 'Crawl',
-        content: 'lorem ipsum',
+        content: details.opening_crawl,
       },
       {
         name: 'characters',
@@ -57,7 +57,6 @@ class Details extends Component {
 
         <TabsSw
           tabsList={tabsList}
-          details={details}
         />
       </Main>
     );
