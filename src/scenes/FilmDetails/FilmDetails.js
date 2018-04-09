@@ -1,70 +1,72 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { getFilmById } from 'actions/swFilms';
-import { get } from 'lodash';
-import { swapiService } from 'services';
+import DetailsPage from 'components/DetailsPage/DetailsPage';
 
-import { AlertWarning, AlertStandard } from 'components/alerts';
-import Details from './Details/Details';
+import DefaultContent from './DefaultContent';
+import DetailsHeader from './DetailsHeader';
 
-import {
-  Main,
-} from './FilmDetails.styles';
+const FilmDetails = ({
+  pendingDetails,
+  errorsDetails,
+  list,
+  match,
+  // redux
+  getItemById,
+}) => {
+  const tabsList = [
+    {
+      name: 'Crawl',
+      content: DefaultContent,
+    },
+    {
+      name: 'characters',
+      type: 'people',
+      list: [],
+      listName: 'characters',
+    },
+    {
+      name: 'planets',
+      type: 'planets',
+      list: [],
+      listName: 'planets',
+    },
+    {
+      name: 'species',
+      type: 'species',
+      list: [],
+      listName: 'species',
+    },
+    {
+      name: 'starships',
+      type: 'starships',
+      list: [],
+      listName: 'starships',
+    },
+    {
+      name: 'vehicles',
+      type: 'vehicles',
+      list: [],
+      listName: 'vehicles',
+    },
+  ];
 
-class FilmDetails extends Component {
-  componentDidMount() {
-    this.sendRequestIfNeeded();
-  }
-
-  sendRequestIfNeeded() {
-    const { pendingDetails, errorsDetails, list } = this.props;
-    const id = this.getId();
-    const filmDetails = this.getFilmById(id);
-    if (!filmDetails && !pendingDetails && !errorsDetails) this.props.getFilmById(id);
-  }
-
-  getFilmById(id) {
-    const { list } = this.props;
-    return list.find(film => swapiService.getIdFromLink(film.url) === id);
-  }
-
-  getId() {
-    return parseInt(get(this.props, 'match.params.id', null), 10);
-  }
-
-  shouldRenderPending() {
-    return this.props.pendingDetails;
-  }
-
-  renderPending() {
-    return <AlertStandard msg="Loading data" progressBar />;
-  }
-
-  shouldRenderErrors() {
-    return this.props.errorsDetails;
-  }
-
-  renderErrors() {
-    return <AlertWarning msg="There was an error" />;
-  }
-
-  render() {
-    const id = this.getId();
-    const filmDetails = this.getFilmById(id);
-
-    return (
-      <Main>
-        {this.shouldRenderPending() && this.renderPending()}
-        {this.shouldRenderErrors() && this.renderErrors()}
-        <Details details={filmDetails} />
-      </Main>
-    );
-  }
-}
+  return (
+    <DetailsPage
+      pendingDetails={pendingDetails}
+      errorsDetails={errorsDetails}
+      list={list}
+      getItemById={getItemById}
+      match={match}
+      tabsList={tabsList}
+      detailsHeader={DetailsHeader}
+    />
+  );
+};
 
 const mapStateToProps = state => {
   const { pendingDetails, errorsDetails, list } = state.swFilms;
   return { pendingDetails, errorsDetails, list };
 };
 
-export default connect(mapStateToProps, { getFilmById })(FilmDetails);
+export default connect(mapStateToProps, { getItemById: getFilmById })(FilmDetails);

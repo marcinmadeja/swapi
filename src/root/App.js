@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Container, Row } from 'components/grid';
 
@@ -14,7 +14,6 @@ import Vehicles from 'scenes/Vehicles/Vehicles';
 
 import Starships from 'scenes/Starships/Starships';
 import StarshipDetails from 'scenes/StarshipDetails/StarshipDetails';
-import StarshipDetails2 from 'scenes/StarshipDetails2/StarshipDetails2';
 
 import Films from 'scenes/Films/Films';
 import FilmDetails from 'scenes/FilmDetails/FilmDetails';
@@ -36,7 +35,7 @@ class App extends Component {
               <Route path="/planets" component={Planets} />
               <Route path="/vehicles" component={Vehicles} />
 
-              <Route path="/starships/:name/:id" component={StarshipDetails2} />
+              <Route path="/starships/:name/:id" component={StarshipDetails} />
               <Route path="/starships" component={Starships} />
 
               <Route path="/" component={Home} />
