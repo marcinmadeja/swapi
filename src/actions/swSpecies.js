@@ -31,12 +31,10 @@ const entryFailureSingle = () => ({ type: SW_SPECIES_SINGLE_FAILURE });
 export const getSpeciesById = (id) => (
   (dispatch, getState, api) => {
     const speciesUrl = [api.swapi.getUrlById(id, 'species')];
-
     dispatch(entryRequestSingle());
 
     api.swapi.getDataListByUrl(speciesUrl)
       .then(response => {
-        console.log('response', response);
         dispatch(entrySuccessSingle(response));
       })
       .catch(error => {
