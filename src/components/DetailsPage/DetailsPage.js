@@ -14,7 +14,7 @@ class DetailsPage extends Component {
   }
 
   sendRequestIfNeeded() {
-    const { pendingDetails, errorsDetails, list, getItemById } = this.props;
+    const { pendingDetails, errorsDetails, getItemById } = this.props;
     const id = this.getId();
     const filmDetails = this.getItemById(id);
     if (!filmDetails && !pendingDetails && !errorsDetails) getItemById(id);

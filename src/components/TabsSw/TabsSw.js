@@ -192,7 +192,6 @@ class TabsSw extends Component {
     const {
       classes,
       tabsList,
-      details,
     } = this.props;
 
     return (

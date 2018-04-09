@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { requestSwStarships } from 'actions/swStarships';
-import SwapiList from 'components/SwapiList/SwapiList';
+
+import { AlertWarning, AlertStandard } from 'components/alerts';
+import StarshipsList from './StarshipsList/StarshipsList';
 
 class Starships extends Component {
+  componentDidMount() {
+    this.props.requestSwStarships();
+  }
+
   render() {
     const {
       list,
@@ -11,7 +17,11 @@ class Starships extends Component {
       errors,
     } = this.props;
 
-    return <SwapiList list={list} pending={pending} errors={errors} requestList={this.props.requestSwStarships} />;
+    if (pending) return <AlertStandard msg="Loading data" progressBar />;
+    if (errors) return <AlertWarning msg="There was an error" />;
+    if (!list.length) return null;
+
+    return <StarshipsList list={list} />;
   }
 }
 

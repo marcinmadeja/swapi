@@ -9,7 +9,6 @@ const entryFailure = () => ({ type: SW_STARSHIPS_FAILURE });
 export const requestSwStarships = () => (
   (dispatch, getState, api) => {
     dispatch(entryRequest());
-
     api.swapi.getStarships()
       .then(response => {
         dispatch(entrySuccess(response));
