@@ -11,7 +11,15 @@ class Starships extends Component {
       errors,
     } = this.props;
 
-    return <SwapiList list={list} pending={pending} errors={errors} requestList={this.props.requestSwStarships} />;
+    return (
+      <SwapiList
+        listName="starships"
+        list={list}
+        pending={pending}
+        errors={errors}
+        requestList={this.props.requestSwStarships}
+      />
+    );
   }
 }
 

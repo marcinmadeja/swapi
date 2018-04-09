@@ -15,6 +15,7 @@ import {
 
 const Starship = ({
   classes = {},
+  listName,
   item: {
     name,
     model,
@@ -24,7 +25,7 @@ const Starship = ({
 }) => {
   const seoName = swapiService.formatUrlName(name);
   const filmId = swapiService.getIdFromLink(url);
-  const itemUrl = `/starships/${seoName}/${filmId}`;
+  const itemUrl = `/${listName}/${seoName}/${filmId}`;
 
   return (
     <Card className={classes.card}>

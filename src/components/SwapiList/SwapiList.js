@@ -13,13 +13,14 @@ class SwapiList extends Component {
       list,
       pending,
       errors,
+      listName,
     } = this.props;
 
     if (pending) return <AlertStandard msg="Loading data" progressBar />;
     if (errors) return <AlertWarning msg="There was an error" />;
     if (!list.length) return null;
 
-    return list.map(item => <ListItem key={item.url} item={item} />);
+    return list.map(item => <ListItem key={item.url} item={item} listName={listName} />);
   }
 }
 
