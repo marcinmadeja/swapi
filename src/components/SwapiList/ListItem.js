@@ -15,7 +15,9 @@ import {
 
 const Starship = ({
   classes = {},
+  ListDetails,
   listName,
+  item,
   item: {
     name,
     model,
@@ -30,19 +32,7 @@ const Starship = ({
   return (
     <Card className={classes.card}>
       <CardContent className={classes.cardContent}>
-        <Name>
-          {name}
-        </Name>
-
-        <InfoItem>
-          <strong>model:</strong>
-          {model}
-        </InfoItem>
-
-        <InfoItem>
-          <strong>manufacturer:</strong>
-          {manufacturer}
-        </InfoItem>
+        <ListDetails details={item} />
 
         <CardActions className={classes.cardActions}>
           <IconButton aria-label="Add to favorites">

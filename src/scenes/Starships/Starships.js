@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { requestSwStarships } from 'actions/swStarships';
 import SwapiList from 'components/SwapiList/SwapiList';
+import ListDetails from './ListDetails';
 
 class Starships extends Component {
   render() {
@@ -18,6 +19,7 @@ class Starships extends Component {
         pending={pending}
         errors={errors}
         requestList={this.props.requestSwStarships}
+        ListDetails={ListDetails}
       />
     );
   }
