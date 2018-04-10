@@ -1,32 +1,30 @@
 import React from 'react';
 import {
+  Main,
   Title,
   Text,
-  Main,
 } from 'components/DetailsPage/styles';
 
-const Info = ({
-  name,
-  model,
-  manufacturer,
-}) => {
+const DetailsHeader = ({ details }) => {
+  const { name, birth_year, gender } = details;
+
   return (
     <Main>
       <Title>{name}</Title>
 
       <Text>
         <p>
-          <strong>Manufacturer:</strong>
-          {manufacturer}
+          <strong>birth year:</strong>
+          {birth_year}
         </p>
 
         <p>
-          <strong>Model:</strong>
-          {model}
+          <strong>gender:</strong>
+          {gender}
         </p>
       </Text>
     </Main>
   );
 };
 
-export default Info;
+export default DetailsHeader;

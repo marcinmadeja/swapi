@@ -19,3 +19,27 @@ export const requestSwPlanets = () => (
       });
   }
 );
+
+export const SW_PLANETS_SINGLE_REQUEST = 'SW_PLANETS_SINGLE_REQUEST';
+export const SW_PLANETS_SINGLE_SUCCESS = 'SW_PLANETS_SINGLE_SUCCESS';
+export const SW_PLANETS_SINGLE_FAILURE = 'SW_PLANETS_SINGLE_FAILURE';
+
+const entryRequestSingle = () => ({ type: SW_PLANETS_SINGLE_REQUEST });
+const entrySuccessSingle = userResponse => ({ type: SW_PLANETS_SINGLE_SUCCESS, payload: userResponse });
+const entryFailureSingle = () => ({ type: SW_PLANETS_SINGLE_FAILURE });
+
+export const getPlanetById = (id) => (
+  (dispatch, getState, api) => {
+    const url = [api.swapi.getUrlById(id, 'planets')];
+
+    dispatch(entryRequestSingle());
+
+    api.swapi.getDataListByUrl(url)
+      .then(response => {
+        dispatch(entrySuccessSingle(response));
+      })
+      .catch(error => {
+        dispatch(entryFailureSingle());
+      });
+  }
+);

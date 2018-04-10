@@ -5,7 +5,7 @@ import {
 } from 'components/SwapiList/styles';
 
 const ListDetails = ({ details }) => {
-  const { name, classification, language, designation } = details;
+  const { name, birth_year, gender } = details;
 
   return (
     <div>
@@ -14,18 +14,13 @@ const ListDetails = ({ details }) => {
       </Name>
 
       <InfoItem>
-        <strong>classification:</strong>
-        {classification}
+        <strong>birth year:</strong>
+        {birth_year}
       </InfoItem>
 
       <InfoItem>
-        <strong>language:</strong>
-        {language}
-      </InfoItem>
-
-      <InfoItem>
-        <strong>designation:</strong>
-        {designation}
+        <strong>gender:</strong>
+        {gender}
       </InfoItem>
     </div>
   );

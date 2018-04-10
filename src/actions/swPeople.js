@@ -19,3 +19,27 @@ export const requestSwPeople = () => (
       });
   }
 );
+
+export const SW_PEOPLE_SINGLE_REQUEST = 'SW_PEOPLE_SINGLE_REQUEST';
+export const SW_PEOPLE_SINGLE_SUCCESS = 'SW_PEOPLE_SINGLE_SUCCESS';
+export const SW_PEOPLE_SINGLE_FAILURE = 'SW_PEOPLE_SINGLE_FAILURE';
+
+const entryRequestSingle = () => ({ type: SW_PEOPLE_SINGLE_REQUEST });
+const entrySuccessSingle = userResponse => ({ type: SW_PEOPLE_SINGLE_SUCCESS, payload: userResponse });
+const entryFailureSingle = () => ({ type: SW_PEOPLE_SINGLE_FAILURE });
+
+export const getPeopleById = (id) => (
+  (dispatch, getState, api) => {
+    const url = [api.swapi.getUrlById(id, 'people')];
+
+    dispatch(entryRequestSingle());
+
+    api.swapi.getDataListByUrl(url)
+      .then(response => {
+        dispatch(entrySuccessSingle(response));
+      })
+      .catch(error => {
+        dispatch(entryFailureSingle());
+      });
+  }
+);

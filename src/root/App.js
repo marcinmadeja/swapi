@@ -8,9 +8,16 @@ import RightDrawer from 'layout/RightDrawer/RightDrawer';
 
 import Home from 'scenes/Home/Home';
 import People from 'scenes/People/People';
+import PeopleDetails from 'scenes/PeopleDetails/PeopleDetails';
+
 import Species from 'scenes/Species/Species';
+import SpeciesDetails from 'scenes/SpeciesDetails/SpeciesDetails';
+
 import Planets from 'scenes/Planets/Planets';
+import PlanetsDetails from 'scenes/PlanetsDetails/PlanetsDetails';
+
 import Vehicles from 'scenes/Vehicles/Vehicles';
+import VehiclesDetails from 'scenes/VehiclesDetails/VehiclesDetails';
 
 import Starships from 'scenes/Starships/Starships';
 import StarshipDetails from 'scenes/StarshipDetails/StarshipDetails';
@@ -30,9 +37,16 @@ class App extends Component {
               <Route path="/films/:name/:id" component={FilmDetails} />
               <Route path="/films" component={Films} />
 
+              <Route path="/people/:name/:id" component={PeopleDetails} />
               <Route path="/people" component={People} />
+
+              <Route path="/species/:name/:id" component={SpeciesDetails} />
               <Route path="/species" component={Species} />
+
+              <Route path="/planets/:name/:id" component={PlanetsDetails} />
               <Route path="/planets" component={Planets} />
+
+              <Route path="/vehicles/:name/:id" component={VehiclesDetails} />
               <Route path="/vehicles" component={Vehicles} />
 
               <Route path="/starships/:name/:id" component={StarshipDetails} />
