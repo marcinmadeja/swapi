@@ -17,7 +17,7 @@ export default (state = initialState, action) => {
     case SW_PEOPLE_REQUEST:
       return { ...state, pending: true, errors: false };
     case SW_PEOPLE_SUCCESS:
-      return reduxUtils.updateInfoAndList(action.payload);
+      return reduxUtils.updateInfoAndList(action.payload, state);
     case SW_PEOPLE_FAILURE:
       return { ...state, pending: false, errors: true };
 

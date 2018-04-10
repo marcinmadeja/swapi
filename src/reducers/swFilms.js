@@ -22,7 +22,7 @@ export default (state = initialState, action) => {
     case SW_FILMS_REQUEST:
       return { ...state, pending: true, errors: false };
     case SW_FILMS_SUCCESS:
-      return reduxUtils.updateInfoAndList(action.payload, sortFilms);
+      return reduxUtils.updateInfoAndList(action.payload, state, sortFilms);
     case SW_FILMS_FAILURE:
       return { ...state, pending: false, errors: true };
 

@@ -17,7 +17,7 @@ export default (state = initialState, action) => {
     case SW_PLANETS_REQUEST:
       return { ...state, pending: true, errors: false };
     case SW_PLANETS_SUCCESS:
-      return reduxUtils.updateInfoAndList(action.payload);
+      return reduxUtils.updateInfoAndList(action.payload, state);
     case SW_PLANETS_FAILURE:
       return { ...state, pending: false, errors: true };
 

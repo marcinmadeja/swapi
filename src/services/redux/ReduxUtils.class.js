@@ -11,12 +11,13 @@ export default class ReduxUtils {
     };
   }
 
-  updateInfoAndList(payload, sort) {
+  updateInfoAndList(payload, state, sort) {
     let list = payload.results;
     if (sort) list = list.sort(sort);
     delete payload.results;
 
     return {
+      ...state,
       list,
       requestData: payload,
       pending: false,
