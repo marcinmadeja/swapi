@@ -1,7 +1,9 @@
 module.exports = {
   "env": {
     "es6": true,
-    "browser": true
+    "browser": true,
+    "mocha": true,
+    "jest": true
   },
   "plugins": [
     "react"
@@ -10,6 +12,10 @@ module.exports = {
     "import/resolver": {
       "node": { "paths": [ "./src/" ] }
     }
+  },
+  globals: {
+    shallow: true,
+    mount: true,
   },
   "extends": ["airbnb"],
   "rules": {

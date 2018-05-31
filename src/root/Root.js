@@ -8,9 +8,10 @@ import 'normalize.css';
 import 'styles/main.css';
 import App from './App';
 
-class Root extends Component {
+export class Root extends Component {
   render() {
     const { user, pending, errors } = this.props;
+
     if (pending) return <Loading full loadingLabel="Login in progress" />;
     if (!user) return <SignIn errors={errors} />;
 
