@@ -53,6 +53,7 @@ module.exports = {
     "prefer-destructuring": 0,
     "jsx-a11y/anchor-is-valid": 0,
     "react/sort-comp": 0,
-    "function-paren-newline": 0
+    "function-paren-newline": 0,
+    "import/no-extraneous-dependencies": 0
   }
 }
