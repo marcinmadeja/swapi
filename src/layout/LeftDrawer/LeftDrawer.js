@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import AppDrawer from 'components/AppDrawer/AppDrawer';
 import SidebarNav from 'components/SidebarNav/SidebarNav';
 
-class LeftDrawer extends Component {
+export class LeftDrawer extends Component {
   render() {
     return (
       <AppDrawer

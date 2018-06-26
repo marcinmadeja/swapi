@@ -22,7 +22,7 @@ import {
   AlertContainer,
 } from './SignIn.styles';
 
-class SignIn extends Component {
+export class SignIn extends Component {
   constructor(props) {
     super(props);
 
@@ -62,7 +62,15 @@ class SignIn extends Component {
             fullWidth
           />
 
-          <Button onClick={this.onButtonClick} variant="raised" color="primary" fullWidth>Sign in</Button>
+          <Button
+            onClick={this.onButtonClick}
+            variant="raised"
+            color="primary"
+            fullWidth
+            data-test="submit-button"
+          >
+            Sign in
+          </Button>
 
           {errors && <AlertContainer><AlertWarning msg="User was not logged in" /></AlertContainer>}
         </FormContainer>

@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserItem should render 1`] = `
+<div
+  className="sc-bdVaJa YuKAo"
+>
+  <div
+    className="sc-bwzfXH iKqSlh"
+  >
+    <div
+      className="MuiAvatar-root-1"
+    >
+      <img
+        alt="Adelle Charles"
+        className="MuiAvatar-img-3"
+        sizes={undefined}
+        src="https://randomuser.me/api/portraits/men/24.jpg"
+        srcSet={undefined}
+      />
+    </div>
+  </div>
+  <div
+    className="sc-htpNat brTlIl"
+  >
+    terrence watts
+  </div>
+</div>
+`;

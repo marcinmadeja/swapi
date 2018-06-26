@@ -9,8 +9,6 @@ import FavoriteIcon from 'material-ui-icons/Favorite';
 import LinkIcon from 'material-ui-icons/Link';
 import {
   styles,
-  Name,
-  InfoItem,
 } from './ListItem.styles';
 
 const Starship = ({

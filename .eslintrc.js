@@ -16,6 +16,7 @@ module.exports = {
   globals: {
     shallow: true,
     mount: true,
+    renderer: true,
   },
   "extends": ["airbnb"],
   "rules": {
@@ -60,6 +61,7 @@ module.exports = {
     "jsx-a11y/anchor-is-valid": 0,
     "react/sort-comp": 0,
     "function-paren-newline": 0,
-    "import/no-extraneous-dependencies": 0
+    "import/no-extraneous-dependencies": 0,
+    "import/no-named-as-default": 0
   }
 }

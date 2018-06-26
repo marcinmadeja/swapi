@@ -5,7 +5,7 @@ import MenuIcon from 'material-ui-icons/Menu';
 
 import UsersList from './UsersList/UsersList';
 
-const DrawerUsers = ({
+export const DrawerUsers = ({
   toggleExtend,
   usersList,
   usersListLast,
@@ -14,7 +14,7 @@ const DrawerUsers = ({
   return (
     <Fragment>
       <List component="nav">
-        <ListItem button onClick={toggleExtend}>
+        <ListItem button onClick={toggleExtend} data-test="toggleButton">
           <ListItemIcon>
             <MenuIcon />
           </ListItemIcon>

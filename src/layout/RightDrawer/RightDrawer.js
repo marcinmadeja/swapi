@@ -4,7 +4,7 @@ import { toggleUsers } from 'actions/drawers';
 import AppDrawer from 'components/AppDrawer/AppDrawer';
 import DrawerUsers from 'components/DrawerUsers/DrawerUsers';
 
-class LeftDrawer extends Component {
+export class RightDrawer extends Component {
   render() {
     return (
       <AppDrawer
@@ -25,4 +25,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { toggleUsers })(LeftDrawer);
+export default connect(mapStateToProps, { toggleUsers })(RightDrawer);

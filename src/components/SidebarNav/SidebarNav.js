@@ -21,7 +21,11 @@ const SidebarNav = ({
   return (
     <Fragment>
       <List component="nav">
-        <ListItem button onClick={toggleExtend}>
+        <ListItem
+          button
+          onClick={toggleExtend}
+          data-test="toggleButton"
+        >
           <ListItemIcon>
             <MenuIcon />
           </ListItemIcon>

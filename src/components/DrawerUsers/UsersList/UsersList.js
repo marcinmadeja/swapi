@@ -7,7 +7,7 @@ import { ListTitle } from './UsersList.styles';
 
 const DISPLAY_USERS_LIMIT = 5;
 
-const UsersList = ({
+export const UsersList = ({
   usersList,
   title,
   extendDrawerUsers,
