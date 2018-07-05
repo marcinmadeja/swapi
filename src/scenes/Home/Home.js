@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { requestSwPeople } from 'actions/swPeople';
 
@@ -27,6 +28,19 @@ export class Home extends Component {
 const mapStateToProps = state => {
   const { list, pending, errors } = state.swPeople;
   return { list, pending, errors };
+};
+
+Home.propTypes = {
+  requestSwPeople: PropTypes.func.isRequired,
+  pending: PropTypes.bool,
+  errors: PropTypes.bool,
+  list: PropTypes.array,
+};
+
+Home.defaultProps = {
+  pending: false,
+  errors: false,
+  list: [],
 };
 
 export default connect(mapStateToProps, { requestSwPeople })(Home);

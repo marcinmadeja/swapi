@@ -4,28 +4,42 @@ import { swapiPeople } from 'constants/testConstants';
 import PeopleCardsList from 'components/PeopleCardsList/PeopleCardsList';
 import { Home } from './Home';
 
-describe('Home', () => {
-  let wrapper;
-  let tree;
+const setup = (props = {}) => {
+  const actions = {
+    requestSwPeople: jest.fn(),
+  };
 
+  const component = <Home {...actions} {...props} />;
+  const shallowComponent = shallow(component);
+
+  return {
+    actions,
+    component,
+    shallowComponent,
+  };
+};
+
+describe('Home', () => {
   it('show Loading data alert', () => {
-    tree = renderer
-      .create(<Home requestSwPeople={() => {}} pending />)
+    const { component } = setup({ pending: true });
+    const tree = renderer
+      .create(component)
       .toJSON();
 
     expect(tree).toMatchSnapshot();
   });
 
   it('show errors alert', () => {
-    tree = renderer
-      .create(<Home requestSwPeople={() => {}} errors />)
+    const { component } = setup({ errors: true });
+    const tree = renderer
+      .create(component)
       .toJSON();
 
     expect(tree).toMatchSnapshot();
   });
 
   it('should render users list', () => {
-    wrapper = shallow(<Home requestSwPeople={() => {}} list={swapiPeople} />);
-    expect(wrapper.find(PeopleCardsList).length).toEqual(1);
+    const { shallowComponent } = setup({ list: swapiPeople });
+    expect(shallowComponent.find(PeopleCardsList).length).toEqual(1);
   });
 });
