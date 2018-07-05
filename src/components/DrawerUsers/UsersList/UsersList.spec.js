@@ -3,19 +3,32 @@ import { users } from 'constants/testConstants';
 import { UsersList } from './UsersList';
 import UserItem from './UserItem/UserItem';
 
-describe('UserList', () => {
-  let wrapper;
-  beforeEach(() => {
-    wrapper = shallow(<UsersList />);
-  });
+const defaultProps = {
+  usersList: [],
+  title: 'Test title!',
+};
 
+const setup = (props = {}) => {
+  props = { ...defaultProps, ...props };
+  const component = <UsersList {...props} />;
+  const shallowComponent = shallow(component);
+
+  return {
+    component,
+    shallowComponent,
+  };
+};
+
+describe('UserList', () => {
   it('should render', () => {
-    expect(wrapper.exists()).toEqual(true);
+    const { shallowComponent } = setup();
+    expect(shallowComponent.exists()).toEqual(true);
   });
 
   it('should not render UserItem if usersList is empty', () => {
+    const { component } = setup({ extendDrawerUsers: true });
     const tree = renderer
-      .create(<UsersList usersList={[]} title="Test title!" extendDrawerUsers />)
+      .create(component)
       .toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -23,8 +36,8 @@ describe('UserList', () => {
 
   it('should render list if usersList not empty', () => {
     const listLength = users.length;
-    wrapper = shallow(<UsersList usersList={users} />);
+    const { shallowComponent } = setup({ usersList: users });
 
-    expect(wrapper.find(UserItem).length).toEqual(listLength);
+    expect(shallowComponent.find(UserItem).length).toEqual(listLength);
   });
 });

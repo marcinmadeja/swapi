@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
@@ -26,6 +27,17 @@ export const UsersList = ({
 const mapStateToProps = state => {
   const { extendDrawerUsers } = state.drawers;
   return { extendDrawerUsers };
+};
+
+UsersList.propTypes = {
+  usersList: PropTypes.array.isRequired,
+  extendDrawerUsers: PropTypes.bool,
+  title: PropTypes.string,
+};
+
+UsersList.defaultProps = {
+  title: '',
+  extendDrawerUsers: false,
 };
 
 export default compose(
