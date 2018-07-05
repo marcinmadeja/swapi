@@ -5,7 +5,7 @@ import { requestSwPeople } from 'actions/swPeople';
 import { AlertWarning, AlertStandard } from 'components/alerts';
 import PeopleCardsList from 'components/PeopleCardsList/PeopleCardsList';
 
-class Home extends Component {
+export class Home extends Component {
   componentDidMount() {
     this.props.requestSwPeople();
   }
