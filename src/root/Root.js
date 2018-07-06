@@ -28,6 +28,8 @@ const mapStateToProps = (state) => {
 
 Root.propTypes = {
   user: PropTypes.object,
+  pending: PropTypes.bool.isRequired,
+  errors: PropTypes.bool.isRequired,
 };
 
 Root.defaultProps = {
