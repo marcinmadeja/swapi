@@ -50,3 +50,4 @@ DrawerUsers.propTypes = {
 };
 
 export default connect(mapStateToProps)(DrawerUsers);
+

@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
 import { withStyles } from 'material-ui/styles';
@@ -104,6 +105,11 @@ const SidebarNav = ({
       </List>
     </Fragment>
   );
+};
+
+SidebarNav.propTypes = {
+  classes: PropTypes.object.isRequired,
+  toggleExtend: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(SidebarNav);
