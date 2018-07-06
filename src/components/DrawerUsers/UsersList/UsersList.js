@@ -13,7 +13,7 @@ export const UsersList = ({
   title,
   extendDrawerUsers,
 }) => {
-  if (!usersList) return null;
+  if (!usersList.length) return null;
   const usersToDisplay = usersList.slice(0, DISPLAY_USERS_LIMIT);
 
   return (

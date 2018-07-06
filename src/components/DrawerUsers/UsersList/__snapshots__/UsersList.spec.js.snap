@@ -1,12 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UserList should not render UserItem if usersList is empty 1`] = `
-<div>
-  <div
-    className="sc-bxivhb knxJoH"
-    open={true}
-  >
-    Test title!
-  </div>
-</div>
-`;
+exports[`UserList should not render UserItem if usersList is empty 1`] = `null`;

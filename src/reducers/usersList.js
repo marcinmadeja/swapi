@@ -5,15 +5,15 @@ import {
 } from 'actions/usersList';
 
 const initialState = {
-  usersList: null,
+  usersList: [],
   pending: false,
   errors: false,
 
-  usersListLast: null,
+  usersListLast: [],
   pendingLast: false,
   errorsLast: false,
 
-  usersListFriends: null,
+  usersListFriends: [],
   pendingFriends: false,
   errorsFriends: false,
 };
@@ -21,25 +21,25 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case USERS_LIST_REQUEST:
-      return { ...state, usersList: null, pending: true, errors: false };
+      return { ...state, usersList: [], pending: true, errors: false };
     case USERS_LIST_SUCCESS:
       return { ...state, usersList: action.payload, pending: false, errors: false };
     case USERS_LIST_FAILURE:
-      return { ...state, usersList: null, pending: false, errors: true };
+      return { ...state, usersList: [], pending: false, errors: true };
 
     case USERS_LIST_LAST_ADDED_REQUEST:
-      return { ...state, usersListLast: null, pendingLast: true, errorsLast: false };
+      return { ...state, usersListLast: [], pendingLast: true, errorsLast: false };
     case USERS_LIST_LAST_ADDED_SUCCESS:
       return { ...state, usersListLast: action.payload, pendingLast: false, errorsLast: false };
     case USERS_LIST_LAST_ADDED_FAILURE:
-      return { ...state, usersListLast: null, pendingLast: false, errorsLast: true };
+      return { ...state, usersListLast: [], pendingLast: false, errorsLast: true };
 
     case USERS_LIST_FRIENDS_REQUEST:
-      return { ...state, usersListFriends: null, pendingFriends: true, errorsFriends: false };
+      return { ...state, usersListFriends: [], pendingFriends: true, errorsFriends: false };
     case USERS_LIST_FRIENDS_SUCCESS:
       return { ...state, usersListFriends: action.payload, pendingFriends: false, errorsFriends: false };
     case USERS_LIST_FRIENDS_FAILURE:
-      return { ...state, usersListFriends: null, pendingFriends: false, errorsFriends: true };
+      return { ...state, usersListFriends: [], pendingFriends: false, errorsFriends: true };
 
     default:
       return state;
