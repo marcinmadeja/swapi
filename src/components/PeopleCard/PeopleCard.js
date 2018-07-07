@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { updateSwFilms, updateSwVehicles, updateSwStarships } from 'actions/swUpdate';
-import { compose } from 'redux';
 import { Col } from 'components/grid';
 
 import SwipeableViews from 'react-swipeable-views';
@@ -112,19 +109,4 @@ class PeopleCard extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  const filmsList = state.swFilms.list;
-  const starshipsList = state.swStarships.list;
-  const vehiclesList = state.swVehicles.list;
-
-  return {
-    filmsList,
-    starshipsList,
-    vehiclesList,
-  };
-};
-
-export default compose(
-  connect(mapStateToProps, { updateSwFilms, updateSwVehicles, updateSwStarships }),
-  withStyles(styles),
-)(PeopleCard);
+export default withStyles(styles)(PeopleCard);
