@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PeopleCardListContainer should show Loading data alert when pending 1`] = `
+<div
+  className="sc-ifAKCX QmfEu"
+>
+  <div
+    className="sc-htoDjs fCFFUG"
+  >
+    <div
+      className="MuiCircularProgress-root-1 MuiCircularProgress-colorPrimary-2"
+      role="progressbar"
+      style={
+        Object {
+          "height": 25,
+          "width": 25,
+        }
+      }
+    >
+      <svg
+        className="MuiCircularProgress-svg-4 MuiCircularProgress-svgIndeterminate-5"
+        viewBox="0 0 50 50"
+      >
+        <circle
+          className="MuiCircularProgress-circle-6 MuiCircularProgress-circleIndeterminate-7"
+          cx={25}
+          cy={25}
+          fill="none"
+          r={20}
+          strokeWidth={2}
+          style={Object {}}
+        />
+      </svg>
+    </div>
+  </div>
+  Loading data
+</div>
+`;
+
+exports[`PeopleCardListContainer should show errors alert when something goes wrong 1`] = `
+<div
+  className="sc-bZQynM vcIUB"
+>
+  There was an error
+</div>
+`;

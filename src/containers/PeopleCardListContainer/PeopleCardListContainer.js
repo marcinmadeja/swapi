@@ -8,7 +8,7 @@ import PeopleCardList from 'components/PeopleCardList/PeopleCardList';
 import PeopleCard from 'components/PeopleCard/PeopleCard';
 import { AlertWarning, AlertStandard } from 'components/alerts';
 
-class PeopleCardListContainer extends Component {
+export class PeopleCardListContainer extends Component {
   componentDidMount() {
     this.props.requestSwPeople();
   }
