@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import PeopleCard from './PeopleCard/PeopleCard';
 
 class PeopleCardsList extends Component {
@@ -11,5 +12,9 @@ class PeopleCardsList extends Component {
     );
   }
 }
+
+PeopleCardsList.propTypes = {
+  users: PropTypes.array.isRequired,
+};
 
 export default PeopleCardsList;

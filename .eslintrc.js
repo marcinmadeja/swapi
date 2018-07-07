@@ -17,6 +17,7 @@ module.exports = {
     shallow: true,
     mount: true,
     renderer: true,
+    render: true,
   },
   "extends": ["airbnb"],
   "rules": {
