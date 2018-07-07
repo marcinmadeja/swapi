@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Col } from 'components/grid';
 
 import SwipeableViews from 'react-swipeable-views';
@@ -108,5 +109,18 @@ class PeopleCard extends Component {
     );
   }
 }
+
+PeopleCard.propTypes = {
+  user: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired,
+
+  filmsList: PropTypes.array.isRequired,
+  starshipsList: PropTypes.array.isRequired,
+  vehiclesList: PropTypes.array.isRequired,
+
+  updateSwFilms: PropTypes.func.isRequired,
+  updateSwVehicles: PropTypes.func.isRequired,
+  updateSwStarships: PropTypes.func.isRequired,
+};
 
 export default withStyles(styles)(PeopleCard);

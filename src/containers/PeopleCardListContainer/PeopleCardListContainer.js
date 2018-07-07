@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { requestSwPeople } from 'actions/swPeople';
 import { updateSwFilms, updateSwVehicles, updateSwStarships } from 'actions/swUpdate';
@@ -61,6 +62,21 @@ const mapStateToProps = state => {
     starshipsList,
     vehiclesList,
   };
+};
+
+PeopleCardListContainer.propTypes = {
+  list: PropTypes.array.isRequired,
+  pending: PropTypes.bool.isRequired,
+  errors: PropTypes.bool.isRequired,
+
+  filmsList: PropTypes.array.isRequired,
+  starshipsList: PropTypes.array.isRequired,
+  vehiclesList: PropTypes.array.isRequired,
+
+  requestSwPeople: PropTypes.func.isRequired,
+  updateSwFilms: PropTypes.func.isRequired,
+  updateSwVehicles: PropTypes.func.isRequired,
+  updateSwStarships: PropTypes.func.isRequired,
 };
 
 export default connect(
