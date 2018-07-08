@@ -4,9 +4,7 @@ import SwipeableViews from 'react-swipeable-views';
 
 import TabContent from './TabContent';
 import TabBio from './TabBio';
-import TabFilms from './TabFilms';
-import TabStarships from './TabStarships';
-import TabVehicles from './TabVehicles';
+import TabList from './TabList';
 
 const TabsContent = ({
   currentTab,
@@ -30,7 +28,14 @@ const TabsContent = ({
         urlList={user.films}
         loadedData={filmsList}
         updateData={updateSwFilms}
-        render={(urlList, loadedData) => (<TabFilms urlList={urlList} loadedData={loadedData} />)}
+        render={(urlList, loadedData) => (
+          <TabList
+            urlList={urlList}
+            loadedData={loadedData}
+            emptyListMsg="no movies"
+            titleKey="title"
+          />
+        )}
       />
 
       <TabContent
@@ -38,7 +43,14 @@ const TabsContent = ({
         urlList={user.starships}
         loadedData={starshipsList}
         updateData={updateSwStarships}
-        render={(urlList, loadedData) => (<TabStarships urlList={urlList} loadedData={loadedData} />)}
+        render={(urlList, loadedData) => (
+          <TabList
+            urlList={urlList}
+            loadedData={loadedData}
+            emptyListMsg="no starships"
+            titleKey="name"
+          />
+        )}
       />
 
       <TabContent
@@ -46,9 +58,15 @@ const TabsContent = ({
         urlList={user.vehicles}
         loadedData={vehiclesList}
         updateData={updateSwVehicles}
-        render={(urlList, loadedData) => (<TabVehicles urlList={urlList} loadedData={loadedData} userData={user} />)}
+        render={(urlList, loadedData) => (
+          <TabList
+            urlList={urlList}
+            loadedData={loadedData}
+            emptyListMsg="no vehicle"
+            titleKey="name"
+          />
+        )}
       />
-
     </SwipeableViews>
   );
 };

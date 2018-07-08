@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import PersonIcon from 'material-ui-icons/Person';
 
 import {
@@ -17,6 +18,10 @@ const CardTitle = ({ name }) => {
       <UserName>{name}</UserName>
     </Title>
   );
+};
+
+CardTitle.propTypes = {
+  name: PropTypes.string.isRequired,
 };
 
 export default CardTitle;
