@@ -1,7 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
 import { userService } from 'services';
 
 import { withStyles } from 'material-ui/styles';
@@ -28,16 +26,9 @@ class BarUser extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  const { user } = state.user;
-  return { user };
-};
-
 BarUser.propTypes = {
+  classes: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
 };
 
-export default compose(
-  withStyles(styles),
-  connect(mapStateToProps),
-)(BarUser);
+export default withStyles(styles)(BarUser);
