@@ -59,6 +59,7 @@ class PeopleCard extends Component {
 
           <TabsContent
             currentTab={currentTab}
+            onTabChange={this.handleTabChange}
             {...this.props}
           />
         </Card>

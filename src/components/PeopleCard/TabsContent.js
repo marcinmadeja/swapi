@@ -9,17 +9,20 @@ import TabList from './TabList';
 const TabsContent = ({
   currentTab,
   user,
+  onTabChange,
+
   filmsList,
-  updateSwFilms,
   starshipsList,
-  updateSwStarships,
   vehiclesList,
+
+  updateSwFilms,
+  updateSwStarships,
   updateSwVehicles,
 }) => {
   return (
     <SwipeableViews
       index={currentTab}
-      onChangeIndex={this.handleChangeIndex}
+      onChangeIndex={onTabChange}
     >
       <TabContent forceLoaded render={() => (<TabBio userData={user} />)} />
 
@@ -74,6 +77,7 @@ const TabsContent = ({
 TabsContent.propTypes = {
   user: PropTypes.object.isRequired,
   currentTab: PropTypes.number.isRequired,
+  onTabChange: PropTypes.func.isRequired,
 
   filmsList: PropTypes.array.isRequired,
   starshipsList: PropTypes.array.isRequired,
