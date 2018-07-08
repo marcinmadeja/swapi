@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[object Object] 1`] = `
+.c0 {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 40px;
+  padding: 0 10px;
+  border-bottom: 1px solid #e6ecf5;
+}
+
+.c1:last-child {
+  border-bottom: none;
+}
+
+.c2 {
+  width: 150px;
+}
+
+.c3 {
+  margin-left: auto;
+  color: #607d8b;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    <div
+      className="c2"
+    >
+      Birthday:
+    </div>
+    <div
+      className="c3"
+    >
+      1999
+    </div>
+  </div>
+  <div
+    className="c1"
+  >
+    <div
+      className="c2"
+    >
+      Eye color:
+    </div>
+    <div
+      className="c3"
+    >
+      red
+    </div>
+  </div>
+  <div
+    className="c1"
+  >
+    <div
+      className="c2"
+    >
+      hair color:
+    </div>
+    <div
+      className="c3"
+    >
+      red
+    </div>
+  </div>
+  <div
+    className="c1"
+  >
+    <div
+      className="c2"
+    >
+      Height:
+    </div>
+    <div
+      className="c3"
+    >
+      180
+    </div>
+  </div>
+  <div
+    className="c1"
+  >
+    <div
+      className="c2"
+    >
+      Mass:
+    </div>
+    <div
+      className="c3"
+    >
+      90
+    </div>
+  </div>
+  <div
+    className="c1"
+  >
+    <div
+      className="c2"
+    >
+      Skin color:
+    </div>
+    <div
+      className="c3"
+    >
+      red
+    </div>
+  </div>
+</div>
+`;

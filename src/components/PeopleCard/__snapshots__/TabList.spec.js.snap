@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TabList should render empty msg, when urlList empty 1`] = `"empty msg"`;
