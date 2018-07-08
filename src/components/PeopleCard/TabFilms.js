@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, ListItem } from './PeopleCard.styles';
+import { List, ListItem } from './styles';
 
 const Film = ({ url, loadedData }) => {
   const filmDetails = loadedData.find(details => details.url === url);

@@ -1,5 +1,6 @@
 import React from 'react';
-import { List, ListItem } from './PeopleCard.styles';
+import PropTypes from 'prop-types';
+import { List, ListItem } from './styles';
 
 const Vehicle = ({ url, loadedData }) => {
   const filmDetails = loadedData.find(details => details.url === url);
@@ -20,6 +21,16 @@ const TabVehicles = ({
       {urlList.map(url => <Vehicle key={url} url={url} loadedData={loadedData} />)}
     </List>
   );
+};
+
+Vehicle.propTypes = {
+  url: PropTypes.string.isRequired,
+  loadedData: PropTypes.array.isRequired,
+};
+
+TabVehicles.propTypes = {
+  urlList: PropTypes.array.isRequired,
+  loadedData: PropTypes.array.isRequired,
 };
 
 export default TabVehicles;
