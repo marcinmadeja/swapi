@@ -7,7 +7,7 @@ import DetailsPage from 'components/DetailsPage/DetailsPage';
 import DefaultContent from './DefaultContent';
 import DetailsHeader from './DetailsHeader';
 
-const PeopleDetails = ({
+export const PeopleDetails = ({
   pendingDetails,
   errorsDetails,
   list,

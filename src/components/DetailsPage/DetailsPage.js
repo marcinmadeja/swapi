@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import { swapiService } from 'services';
 import { AlertWarning, AlertStandard } from 'components/alerts';
@@ -8,25 +9,31 @@ import {
   Main,
 } from './DetailsPage.styles';
 
+export const sendRequestIfNeeded = props => {
+  const { getItemById } = props;
+  const id = getId(props);
+  if (shouldSendRequest(props)) getItemById(id);
+};
+
+export const shouldSendRequest = props => {
+  const { pendingDetails, errorsDetails, list } = props;
+  const id = getId(props);
+  const filmDetails = getItemByIdLocal(id, list);
+
+  return !filmDetails && !pendingDetails && !errorsDetails;
+};
+
+export const getItemByIdLocal = (id, list) => {
+  return list.find(film => swapiService.getIdFromLink(film.url) === id);
+};
+
+export const getId = props => {
+  return parseInt(get(props, 'match.params.id', null), 10);
+};
+
 class DetailsPage extends Component {
   componentDidMount() {
-    this.sendRequestIfNeeded();
-  }
-
-  sendRequestIfNeeded() {
-    const { pendingDetails, errorsDetails, getItemById } = this.props;
-    const id = this.getId();
-    const filmDetails = this.getItemById(id);
-    if (!filmDetails && !pendingDetails && !errorsDetails) getItemById(id);
-  }
-
-  getItemById(id) {
-    const { list } = this.props;
-    return list.find(film => swapiService.getIdFromLink(film.url) === id);
-  }
-
-  getId() {
-    return parseInt(get(this.props, 'match.params.id', null), 10);
+    sendRequestIfNeeded(this.props);
   }
 
   formatTabList(itemDetails) {
@@ -50,7 +57,7 @@ class DetailsPage extends Component {
   }
 
   renderPending() {
-    return <AlertStandard msg="Loading data" progressBar />;
+    return <AlertStandard msg="Loading data" progressBar data-test="pendingAlert" />;
   }
 
   shouldRenderErrors() {
@@ -58,12 +65,13 @@ class DetailsPage extends Component {
   }
 
   renderErrors() {
-    return <AlertWarning msg="There was an error" />;
+    return <AlertWarning msg="There was an error" data-test="errorAlert" />;
   }
 
   render() {
-    const id = this.getId();
-    const itemDetails = this.getItemById(id);
+    const { list, detailsHeader } = this.props;
+    const id = getId(this.props);
+    const itemDetails = getItemByIdLocal(id, list);
     const tabsList = this.formatTabList(itemDetails);
 
     return (
@@ -73,11 +81,20 @@ class DetailsPage extends Component {
         <Details
           details={itemDetails}
           tabsList={tabsList}
-          detailsHeader={this.props.detailsHeader}
+          detailsHeader={detailsHeader}
         />
       </Main>
     );
   }
 }
+
+DetailsPage.propTypes = {
+  pendingDetails: PropTypes.bool.isRequired,
+  errorsDetails: PropTypes.bool.isRequired,
+  getItemById: PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types
+  detailsHeader: PropTypes.func.isRequired,
+  list: PropTypes.array.isRequired,
+  tabsList: PropTypes.array.isRequired,
+};
 
 export default DetailsPage;
