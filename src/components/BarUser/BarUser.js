@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { userService } from 'services';
 
@@ -13,7 +13,7 @@ class BarUser extends Component {
     const { classes, user } = this.props;
 
     return (
-      <Fragment>
+      <div>
         <IconButton className={classes.avatarButton}>
           <Avatar
             alt="Adelle Charles"
@@ -21,7 +21,7 @@ class BarUser extends Component {
             className={classes.avatar}
           />
         </IconButton>
-      </Fragment>
+      </div>
     );
   }
 }
