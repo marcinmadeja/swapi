@@ -3,23 +3,9 @@ import PropTypes from 'prop-types';
 import { CircularProgress } from 'material-ui/Progress';
 import { ProgressBar } from './Alert.styled';
 
-const { Fragment } = React;
-
-const propTypes = {
-  icon: PropTypes.node,
-  progressBar: PropTypes.bool,
-  msg: PropTypes.string.isRequired,
-};
-
-const defaultProps = {
-  progressBar: false,
-  icon: null,
-};
-
 const AlertStandard = ({
   msg,
   progressBar,
-  icon,
 }) => {
   function renderProgressBar() {
     if (!progressBar) return null;
@@ -34,14 +20,20 @@ const AlertStandard = ({
   }
 
   return (
-    <Fragment>
+    <div>
       {renderProgressBar()}
       {msg}
-    </Fragment>
+    </div>
   );
 };
 
-AlertStandard.propTypes = propTypes;
-AlertStandard.defaultProps = defaultProps;
+AlertStandard.propTypes = {
+  progressBar: PropTypes.bool,
+  msg: PropTypes.string.isRequired,
+};
+
+AlertStandard.defaultProps = {
+  progressBar: false,
+};
 
 export default AlertStandard;

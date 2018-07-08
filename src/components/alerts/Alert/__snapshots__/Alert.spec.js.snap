@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[object Object] 1`] = `
+.c0 {
+  margin-right: 15px;
+}
+
+<div>
+  <div
+    className="c0"
+  >
+    <div
+      className="MuiCircularProgress-root-1 MuiCircularProgress-colorPrimary-2"
+      role="progressbar"
+      style={
+        Object {
+          "height": 25,
+          "width": 25,
+        }
+      }
+    >
+      <svg
+        className="MuiCircularProgress-svg-4 MuiCircularProgress-svgIndeterminate-5"
+        viewBox="0 0 50 50"
+      >
+        <circle
+          className="MuiCircularProgress-circle-6 MuiCircularProgress-circleIndeterminate-7"
+          cx={25}
+          cy={25}
+          fill="none"
+          r={20}
+          strokeWidth={2}
+          style={Object {}}
+        />
+      </svg>
+    </div>
+  </div>
+  Test message
+</div>
+`;

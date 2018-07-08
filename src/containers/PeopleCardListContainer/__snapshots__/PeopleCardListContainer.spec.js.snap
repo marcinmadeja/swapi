@@ -4,36 +4,38 @@ exports[`PeopleCardListContainer should show Loading data alert when pending 1`]
 <div
   className="sc-gzVnrw khfqoz"
 >
-  <div
-    className="sc-gZMcBi jOpOnU"
-  >
+  <div>
     <div
-      className="MuiCircularProgress-root-1 MuiCircularProgress-colorPrimary-2"
-      role="progressbar"
-      style={
-        Object {
-          "height": 25,
-          "width": 25,
-        }
-      }
+      className="sc-gZMcBi jOpOnU"
     >
-      <svg
-        className="MuiCircularProgress-svg-4 MuiCircularProgress-svgIndeterminate-5"
-        viewBox="0 0 50 50"
+      <div
+        className="MuiCircularProgress-root-1 MuiCircularProgress-colorPrimary-2"
+        role="progressbar"
+        style={
+          Object {
+            "height": 25,
+            "width": 25,
+          }
+        }
       >
-        <circle
-          className="MuiCircularProgress-circle-6 MuiCircularProgress-circleIndeterminate-7"
-          cx={25}
-          cy={25}
-          fill="none"
-          r={20}
-          strokeWidth={2}
-          style={Object {}}
-        />
-      </svg>
+        <svg
+          className="MuiCircularProgress-svg-4 MuiCircularProgress-svgIndeterminate-5"
+          viewBox="0 0 50 50"
+        >
+          <circle
+            className="MuiCircularProgress-circle-6 MuiCircularProgress-circleIndeterminate-7"
+            cx={25}
+            cy={25}
+            fill="none"
+            r={20}
+            strokeWidth={2}
+            style={Object {}}
+          />
+        </svg>
+      </div>
     </div>
+    Loading data
   </div>
-  Loading data
 </div>
 `;
 
@@ -41,6 +43,8 @@ exports[`PeopleCardListContainer should show errors alert when something goes wr
 <div
   className="sc-dnqmqq chIbYT"
 >
-  There was an error
+  <div>
+    There was an error
+  </div>
 </div>
 `;
