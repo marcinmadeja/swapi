@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {
   Content,
@@ -50,6 +51,17 @@ const TabBio = ({
       </Item>
     </Content>
   );
+};
+
+TabBio.propTypes = {
+  userData: PropTypes.shape({
+    birth_year: PropTypes.string.isRequired,
+    eye_color: PropTypes.string.isRequired,
+    hair_color: PropTypes.string.isRequired,
+    height: PropTypes.string.isRequired,
+    mass: PropTypes.string.isRequired,
+    skin_color: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default TabBio;
