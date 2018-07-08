@@ -9,7 +9,6 @@ import TabsHeader from './TabsHeader';
 import CardTitle from './CardTitle';
 import TabsContent from './TabsContent';
 
-
 const styles = (theme) => ({
   card: {
     marginBottom: 30,

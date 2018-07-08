@@ -1,7 +1,10 @@
 import React from 'react';
-import Tabs, { Tab } from 'material-ui/Tabs';
 import { swapiPeople } from 'constants/testConstants';
 import PeopleCard from './PeopleCard';
+import TabsHeader from './TabsHeader';
+import CardTitle from './CardTitle';
+import TabsContent from './TabsContent';
+
 
 const defaultProps = {
   user: {},
@@ -37,9 +40,18 @@ describe('PeopleCard', () => {
     expect(shallowComponent.exists()).toEqual(true);
   });
 
-  it('should call action', () => {
-    const { shallowComponent } = setup({ user: swapiPeople[0] });
-    const tab = shallowComponent.find(Tab);
-    console.log(tab);
+  it('should render TabsHeader', () => {
+    const shallowComponent = setup({ user: swapiPeople[0] }).shallowComponent.dive();
+    expect(shallowComponent.find(TabsHeader).exists()).toBe(true);
+  });
+
+  it('should render CardTitle', () => {
+    const shallowComponent = setup({ user: swapiPeople[0] }).shallowComponent.dive();
+    expect(shallowComponent.find(CardTitle).exists()).toBe(true);
+  });
+
+  it('should render TabsContent', () => {
+    const shallowComponent = setup({ user: swapiPeople[0] }).shallowComponent.dive();
+    expect(shallowComponent.find(TabsContent).exists()).toBe(true);
   });
 });
