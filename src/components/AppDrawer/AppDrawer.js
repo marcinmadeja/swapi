@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from 'material-ui/styles';
 import Drawer from 'material-ui/Drawer';
@@ -13,8 +14,8 @@ class AppDrawer extends Component {
     const {
       classes,
       children,
-      extend = false,
-      anchor = 'left',
+      extend,
+      anchor,
     } = this.props;
 
     const paperClass = classNames(classes.paper, { [classes.paperExtend]: extend });
@@ -33,5 +34,20 @@ class AppDrawer extends Component {
     );
   }
 }
+
+AppDrawer.propTypes = {
+  classes: PropTypes.object.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+  extend: PropTypes.bool,
+  anchor: PropTypes.string,
+};
+
+AppDrawer.defaultProps = {
+  anchor: 'left',
+  extend: false,
+};
 
 export default withStyles(styles)(AppDrawer);
