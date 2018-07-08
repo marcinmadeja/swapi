@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Main,
   Title,
@@ -25,6 +26,14 @@ const DetailsHeader = ({ details }) => {
       </Text>
     </Main>
   );
+};
+
+DetailsHeader.propTypes = {
+  details: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    birth_year: PropTypes.string.isRequired,
+    gender: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default DetailsHeader;

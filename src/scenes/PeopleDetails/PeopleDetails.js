@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getPeopleById } from 'actions/swPeople';
 import DetailsPage from 'components/DetailsPage/DetailsPage';
@@ -11,7 +12,6 @@ const PeopleDetails = ({
   errorsDetails,
   list,
   match,
-  // redux
   getItemById,
 }) => {
   const tabsList = [
@@ -61,6 +61,19 @@ const PeopleDetails = ({
 const mapStateToProps = state => {
   const { pendingDetails, errorsDetails, list } = state.swPeople;
   return { pendingDetails, errorsDetails, list };
+};
+
+PeopleDetails.propTypes = {
+  pendingDetails: PropTypes.bool,
+  errorsDetails: PropTypes.bool,
+  list: PropTypes.array.isRequired,
+  match: PropTypes.object.isRequired,
+  getItemById: PropTypes.func.isRequired,
+};
+
+PeopleDetails.defaultProps = {
+  pendingDetails: false,
+  errorsDetails: false,
 };
 
 export default connect(mapStateToProps, { getItemById: getPeopleById })(PeopleDetails);

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const DefaultContent = ({
   details: {
@@ -18,6 +19,16 @@ const DefaultContent = ({
       eye color: <strong>{eye_color}</strong><br />
     </div>
   );
+};
+
+DefaultContent.propTypes = {
+  details: PropTypes.shape({
+    height: PropTypes.string.isRequired,
+    mass: PropTypes.string.isRequired,
+    hair_color: PropTypes.string.isRequired,
+    skin_color: PropTypes.string.isRequired,
+    eye_color: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default DefaultContent;
