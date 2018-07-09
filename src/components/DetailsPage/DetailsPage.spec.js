@@ -1,5 +1,9 @@
 import React from 'react';
-import DetailsPage, { sendRequestIfNeeded, getItemByIdLocal, getId } from './DetailsPage';
+import DetailsPage,
+{
+  shouldSendRequest,
+  getId,
+} from './DetailsPage';
 import Details from './Details';
 
 const defaultProps = {
@@ -7,6 +11,9 @@ const defaultProps = {
   errorsDetails: false,
   list: [],
   tabsList: [],
+  match: {
+    params: { id: 1 },
+  },
 };
 
 const setup = (props = {}, children = null) => {
@@ -42,7 +49,7 @@ describe('DetailsPage', () => {
     expect(shallowComponent.find(Details).length).toEqual(1);
   });
 
-  it('should send request if needed', () => {
+  it('shouldSendRequest returns true when needed', () => {
     const { actions } = setup();
     const props = {
       ...defaultProps,
@@ -52,6 +59,33 @@ describe('DetailsPage', () => {
       list: [],
     };
 
-    sendRequestIfNeeded(props);
+    expect(shouldSendRequest(props)).toBe(true);
+  });
+
+  it('shouldSendRequest returns false when needed', () => {
+    const { actions } = setup();
+    const props1 = {
+      ...defaultProps,
+      ...actions,
+      pendingDetails: true,
+      errorsDetails: false,
+      list: [],
+    };
+
+    const props2 = {
+      ...defaultProps,
+      ...actions,
+      pendingDetails: false,
+      errorsDetails: true,
+      list: [],
+    };
+
+    expect(shouldSendRequest(props1)).toBe(false);
+    expect(shouldSendRequest(props2)).toBe(false);
+  });
+
+  it('should get id from routers', () => {
+    const id = getId(defaultProps);
+    expect(id).toEqual(1);
   });
 });

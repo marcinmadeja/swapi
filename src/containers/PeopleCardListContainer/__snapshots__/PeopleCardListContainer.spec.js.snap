@@ -2,11 +2,13 @@
 
 exports[`PeopleCardListContainer should show Loading data alert when pending 1`] = `
 <div
-  className="sc-gzVnrw khfqoz"
+  className="sc-htoDjs csHJzQ"
 >
-  <div>
+  <div
+    className="sc-gzVnrw jAiQOI"
+  >
     <div
-      className="sc-gZMcBi jOpOnU"
+      className="sc-gqjmRU hbuXHA"
     >
       <div
         className="MuiCircularProgress-root-1 MuiCircularProgress-colorPrimary-2"
@@ -41,9 +43,11 @@ exports[`PeopleCardListContainer should show Loading data alert when pending 1`]
 
 exports[`PeopleCardListContainer should show errors alert when something goes wrong 1`] = `
 <div
-  className="sc-dnqmqq chIbYT"
+  className="sc-iwsKbI fvvKaX"
 >
-  <div>
+  <div
+    className="sc-gzVnrw jAiQOI"
+  >
     There was an error
   </div>
 </div>

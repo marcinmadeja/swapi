@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CircularProgress } from 'material-ui/Progress';
-import { ProgressBar } from './Alert.styled';
+import { ProgressBar, Main } from './Alert.styled';
 
 const AlertStandard = ({
   msg,
@@ -20,10 +20,10 @@ const AlertStandard = ({
   }
 
   return (
-    <div>
+    <Main>
       {renderProgressBar()}
       {msg}
-    </div>
+    </Main>
   );
 };
 

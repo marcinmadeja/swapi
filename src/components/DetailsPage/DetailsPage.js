@@ -18,38 +18,36 @@ export const sendRequestIfNeeded = props => {
 export const shouldSendRequest = props => {
   const { pendingDetails, errorsDetails, list } = props;
   const id = getId(props);
-  const filmDetails = getItemByIdLocal(id, list);
-
-  return !filmDetails && !pendingDetails && !errorsDetails;
+  const pageDetails = getItemByIdLocal(id, list);
+  return !pageDetails && !pendingDetails && !errorsDetails;
 };
 
 export const getItemByIdLocal = (id, list) => {
-  return list.find(film => swapiService.getIdFromLink(film.url) === id);
+  return list.find(item => swapiService.getIdFromLink(item.url) === id);
 };
 
 export const getId = props => {
   return parseInt(get(props, 'match.params.id', null), 10);
 };
 
+export const formatTabList = (itemDetails, tabsList) => {
+  if (!itemDetails) return false;
+  return tabsList.map(tab => formatTab(tab, itemDetails));
+};
+
+export const formatTab = (tab, itemDetails) => {
+  const formatedTab = { ...tab };
+  const { content, list, listName } = formatedTab;
+  const Content = content;
+
+  if (content) formatedTab.content = <Content details={itemDetails} />;
+  if (list && listName) formatedTab.list = itemDetails[listName] || [];
+  return formatedTab;
+};
+
 class DetailsPage extends Component {
   componentDidMount() {
     sendRequestIfNeeded(this.props);
-  }
-
-  formatTabList(itemDetails) {
-    if (!itemDetails) return false;
-    const tabsList = this.props.tabsList || [];
-    return tabsList.map(tab => this.formatTab(tab, itemDetails));
-  }
-
-  formatTab(tab, itemDetails) {
-    const formatedTab = { ...tab };
-    const { content, list, listName } = formatedTab;
-    const Content = content;
-
-    if (content) formatedTab.content = <Content details={itemDetails} />;
-    if (list && listName) formatedTab.list = itemDetails[listName] || [];
-    return formatedTab;
   }
 
   shouldRenderPending() {
@@ -69,10 +67,10 @@ class DetailsPage extends Component {
   }
 
   render() {
-    const { list, detailsHeader } = this.props;
+    const { list, detailsHeader, tabsList } = this.props;
     const id = getId(this.props);
     const itemDetails = getItemByIdLocal(id, list);
-    const tabsList = this.formatTabList(itemDetails);
+    const formatedTabsList = formatTabList(itemDetails, tabsList);
 
     return (
       <Main>
@@ -80,7 +78,7 @@ class DetailsPage extends Component {
         {this.shouldRenderErrors() && this.renderErrors()}
         <Details
           details={itemDetails}
-          tabsList={tabsList}
+          tabsList={formatedTabsList}
           detailsHeader={detailsHeader}
         />
       </Main>

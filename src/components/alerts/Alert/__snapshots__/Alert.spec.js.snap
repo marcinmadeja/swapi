@@ -2,12 +2,25 @@
 
 exports[`[object Object] 1`] = `
 .c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
   margin-right: 15px;
 }
 
-<div>
+<div
+  className="c0"
+>
   <div
-    className="c0"
+    className="c1"
   >
     <div
       className="MuiCircularProgress-root-1 MuiCircularProgress-colorPrimary-2"
