@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Name,
   InfoItem,
@@ -24,6 +25,14 @@ const ListDetails = ({ details }) => {
       </InfoItem>
     </div>
   );
+};
+
+ListDetails.propTypes = {
+  details: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    birth_year: PropTypes.string.isRequired,
+    gender: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default ListDetails;

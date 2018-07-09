@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[object Object] 1`] = `
+.c0 {
+  margin: 0 0 21px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.c1 {
+  margin-bottom: 20px;
+  -webkit-letter-spacing: 0.7px;
+  -moz-letter-spacing: 0.7px;
+  -ms-letter-spacing: 0.7px;
+  letter-spacing: 0.7px;
+}
+
+.c1 strong {
+  margin-bottom: 5px;
+  display: block;
+  font-size: 16px;
+  text-transform: uppercase;
+  -webkit-letter-spacing: initial;
+  -moz-letter-spacing: initial;
+  -ms-letter-spacing: initial;
+  letter-spacing: initial;
+}
+
+<div>
+  <h3
+    className="c0"
+  >
+    Name
+  </h3>
+  <div
+    className="c1"
+  >
+    <strong>
+      birth year:
+    </strong>
+    2001
+  </div>
+  <div
+    className="c1"
+  >
+    <strong>
+      gender:
+    </strong>
+    male
+  </div>
+</div>
+`;
