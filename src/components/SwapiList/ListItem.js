@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { swapiService } from 'services';
 
@@ -11,21 +12,23 @@ import {
   styles,
 } from './ListItem.styles';
 
-const Starship = ({
+export const createSeName = (name, url, listName) => {
+  const seoName = swapiService.formatUrlName(name);
+  const filmId = swapiService.getIdFromLink(url);
+  return `/${listName}/${seoName}/${filmId}`;
+};
+
+const ListItem = ({
   classes = {},
   ListDetails,
   listName,
   item,
   item: {
     name,
-    model,
-    manufacturer,
     url,
   },
 }) => {
-  const seoName = swapiService.formatUrlName(name);
-  const filmId = swapiService.getIdFromLink(url);
-  const itemUrl = `/${listName}/${seoName}/${filmId}`;
+  const itemURL = createSeName(name, url, listName);
 
   return (
     <Card className={classes.card}>
@@ -37,7 +40,7 @@ const Starship = ({
             <FavoriteIcon />
           </IconButton>
 
-          <IconButton component={props => <Link to={itemUrl} {...props} />} aria-label="Link">
+          <IconButton component={props => <Link to={itemURL} {...props} />} aria-label="Link">
             <LinkIcon />
           </IconButton>
         </CardActions>
@@ -46,4 +49,14 @@ const Starship = ({
   );
 };
 
-export default withStyles(styles)(Starship);
+ListItem.propTypes = {
+  classes: PropTypes.object.isRequired,
+  ListDetails: PropTypes.func.isRequired,
+  listName: PropTypes.string.isRequired,
+  item: PropTypes.shape({
+    name: PropTypes.string,
+    url: PropTypes.string,
+  }).isRequired,
+};
+
+export default withStyles(styles)(ListItem);
