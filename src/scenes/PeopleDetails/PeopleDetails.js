@@ -7,6 +7,37 @@ import DetailsPage from 'components/DetailsPage/DetailsPage';
 import DefaultContent from './DefaultContent';
 import DetailsHeader from './DetailsHeader';
 
+export const tabsList = [
+  {
+    name: 'Details',
+    content: DefaultContent,
+  },
+  {
+    name: 'species',
+    listName: 'species',
+    type: 'species',
+    list: [],
+  },
+  {
+    name: 'vehicles',
+    listName: 'vehicles',
+    type: 'vehicles',
+    list: [],
+  },
+  {
+    name: 'starships',
+    listName: 'starships',
+    type: 'starships',
+    list: [],
+  },
+  {
+    name: 'films',
+    listName: 'films',
+    type: 'films',
+    list: [],
+  },
+];
+
 export const PeopleDetails = ({
   pendingDetails,
   errorsDetails,
@@ -14,37 +45,6 @@ export const PeopleDetails = ({
   match,
   getItemById,
 }) => {
-  const tabsList = [
-    {
-      name: 'Details',
-      content: DefaultContent,
-    },
-    {
-      name: 'species',
-      listName: 'species',
-      type: 'species',
-      list: [],
-    },
-    {
-      name: 'vehicles',
-      listName: 'vehicles',
-      type: 'vehicles',
-      list: [],
-    },
-    {
-      name: 'starships',
-      listName: 'starships',
-      type: 'starships',
-      list: [],
-    },
-    {
-      name: 'films',
-      listName: 'films',
-      type: 'films',
-      list: [],
-    },
-  ];
-
   return (
     <DetailsPage
       pendingDetails={pendingDetails}
