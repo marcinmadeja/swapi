@@ -1,6 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { swapiService } from 'services';
 import { AlertStandard } from 'components/alerts';
+
+export const getNotLoadedData = (urlList, loadedData) => {
+  if (areAllArraysEmpty(urlList, loadedData)) return [];
+  return swapiService.getNotLoadedUrl(urlList, loadedData);
+};
+
+export const areAllArraysEmpty = (urlList, loadedData) => {
+  return !Array.isArray(urlList) || !Array.isArray(loadedData);
+};
+
+export const isUpdatingInProgress = (notLoaded, isActive) => {
+  return notLoaded.length && isActive;
+};
+
+export const isNoData = (urlList) => {
+  return Array.isArray(urlList) && !urlList.length;
+};
 
 const TabContent = ({
   isActive = false,
@@ -10,22 +28,35 @@ const TabContent = ({
   updateData,
   Render,
 }) => {
-  function getNotLoadedData() {
-    if (!Array.isArray(urlList) || !Array.isArray(loadedData)) return [];
-    return swapiService.getNotLoadedUrl(urlList, loadedData);
-  }
+  const notLoaded = getNotLoadedData(urlList, loadedData);
 
-  const notLoaded = getNotLoadedData();
-
-  if (notLoaded.length && isActive) {
+  if (isUpdatingInProgress(notLoaded, isActive)) {
     updateData(notLoaded);
     return <AlertStandard msg="Loading data" progressBar />;
   }
 
-  if (Array.isArray(urlList) && !urlList.length) return <AlertStandard msg="No data" />;
+  if (isNoData(urlList)) return <AlertStandard msg="No data" />;
 
   if (!urlList) return <Render content={content} />;
   return <Render urlList={urlList} loadedData={loadedData} />;
+};
+
+TabContent.propTypes = {
+  isActive: PropTypes.bool.isRequired,
+  urlList: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.bool,
+  ]),
+  loadedData: PropTypes.array,
+  content: PropTypes.node,
+  updateData: PropTypes.func.isRequired,
+  Render: PropTypes.func.isRequired,
+};
+
+TabContent.defaultProps = {
+  urlList: false,
+  loadedData: [],
+  content: null,
 };
 
 export default TabContent;
