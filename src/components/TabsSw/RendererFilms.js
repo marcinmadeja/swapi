@@ -1,9 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { swapiService } from 'services';
 import { ListItem } from './TabsSw.styles';
 
-export const RendererFilms = (urlList, loadedData) => {
-  if (!urlList || !loadedData) return null;
+export const RendererFilms = ({
+  urlList,
+  loadedData,
+}) => {
+  if (!urlList.length || !loadedData.length) return null;
   return urlList.map(url => {
     const detail = loadedData.find(details => details.url === url);
     if (!detail) return null;
@@ -17,6 +21,11 @@ export const RendererFilms = (urlList, loadedData) => {
       </ListItem>
     );
   });
+};
+
+RendererFilms.propTypes = {
+  urlList: PropTypes.array.isRequired,
+  loadedData: PropTypes.array.isRequired,
 };
 
 export default RendererFilms;

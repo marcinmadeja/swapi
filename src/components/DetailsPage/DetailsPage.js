@@ -87,12 +87,17 @@ class DetailsPage extends Component {
 }
 
 DetailsPage.propTypes = {
-  pendingDetails: PropTypes.bool.isRequired,
-  errorsDetails: PropTypes.bool.isRequired,
+  pendingDetails: PropTypes.bool,
+  errorsDetails: PropTypes.bool,
   getItemById: PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types
   detailsHeader: PropTypes.func.isRequired,
   list: PropTypes.array.isRequired,
   tabsList: PropTypes.array.isRequired,
+};
+
+DetailsPage.defaultProps = {
+  pendingDetails: false,
+  errorsDetails: false,
 };
 
 export default DetailsPage;

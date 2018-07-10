@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[object Object] 1`] = `
+.c0 {
+  margin-bottom: 25px;
+  font-size: 18px;
+  line-height: 1.5;
+  -webkit-letter-spacing: 0.5px;
+  -moz-letter-spacing: 0.5px;
+  -ms-letter-spacing: 0.5px;
+  letter-spacing: 0.5px;
+  color: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  display: block;
+  -webkit-transition: 0.33s all;
+  transition: 0.33s all;
+}
+
+.c0:hover {
+  color: #607d8b;
+}
+
+.c0 strong {
+  font-size: 16px;
+}
+
+<a
+  className="c0"
+  href="/species/human/1"
+  onClick={[Function]}
+>
+  Human
+   (classification: 
+  mammal
+  )
+  <br />
+  language: 
+  <strong>
+    Galactic Basic
+  </strong>
+</a>
+`;

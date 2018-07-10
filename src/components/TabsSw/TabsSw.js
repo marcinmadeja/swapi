@@ -120,7 +120,7 @@ class TabsSw extends Component {
                 isActive={currentTab === key}
                 loadedData={getLoadedList(tab.type, this.props)}
                 updateData={getUpdateData(tab.type, this.props)}
-                render={getRenderer(tab.type)}
+                Render={getRenderer(tab.type)}
               />
             </TabWrapper>
           ))}

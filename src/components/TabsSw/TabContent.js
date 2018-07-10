@@ -8,7 +8,7 @@ const TabContent = ({
   loadedData = [],
   content,
   updateData,
-  render,
+  Render,
 }) => {
   function getNotLoadedData() {
     if (!Array.isArray(urlList) || !Array.isArray(loadedData)) return [];
@@ -24,8 +24,8 @@ const TabContent = ({
 
   if (Array.isArray(urlList) && !urlList.length) return <AlertStandard msg="No data" />;
 
-  if (!urlList) return render(content);
-  return render(urlList, loadedData);
+  if (!urlList) return <Render content={content} />;
+  return <Render urlList={urlList} loadedData={loadedData} />;
 };
 
 export default TabContent;

@@ -2,8 +2,11 @@ import React from 'react';
 import { swapiService } from 'services';
 import { ListItem } from './TabsSw.styles';
 
-const rendererPeople = (urlList, loadedData) => {
-  if (!urlList || !loadedData) return null;
+const rendererPeople = ({
+  urlList,
+  loadedData,
+}) => {
+  if (!urlList.length || !loadedData.length) return null;
   return urlList.map(url => {
     const detail = loadedData.find(details => details.url === url);
     if (!detail) return null;
