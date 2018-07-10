@@ -10,18 +10,66 @@ import {
 } from 'actions/swUpdate';
 import { compose } from 'redux';
 import SwipeableViews from 'react-swipeable-views';
-import { swapiService } from 'services';
 
 import { withStyles } from 'material-ui/styles';
 import Tabs, { Tab } from 'material-ui/Tabs';
+
+import RendererPeople from './RendererPeople';
+import RendererSpecies from './RendererSpecies';
+import RendererVehicles from './RendererVehicles';
+import RendererStarships from './RendererStarships';
+import RendererPlanets from './RendererPlanets';
+import RendererFilms from './RendererFilms';
+import RenderDefault from './RenderDefault';
 
 import TabContent from './TabContent';
 import {
   styles,
   TabWrapper,
-  DefaultTab,
-  ListItem,
 } from './TabsSw.styles';
+
+export const getLoadedList = (type, props) => {
+  switch (type) {
+    case 'people': return props.peopleList;
+    case 'starships': return props.starshipsList;
+    case 'vehicles': return props.vehiclesList;
+    case 'species': return props.speciesList;
+    case 'planets': return props.planetsList;
+    case 'films': return props.filmsList;
+    default: return null;
+  }
+};
+
+export const getUpdateData = (type, props) => {
+  switch (type) {
+    case 'people': return props.updateSwPeople;
+    case 'starships': return props.updateSwStarships;
+    case 'vehicles': return props.updateSwVehicles;
+    case 'species': return props.updateSwSpecies;
+    case 'planets': return props.updateSwPlanets;
+    case 'films': return props.updateSwFilms;
+    default: return () => {};
+  }
+};
+
+export const getRenderer = type => {
+  switch (type) {
+    case 'people':
+      return RendererPeople;
+    case 'species':
+      return RendererSpecies;
+    case 'starships':
+      return RendererStarships;
+    case 'planets':
+      return RendererPlanets;
+    case 'vehicles':
+      return RendererVehicles;
+    case 'films':
+      return RendererFilms;
+    default:
+      return RenderDefault;
+  }
+};
 
 class TabsSw extends Component {
   constructor(props) {
@@ -29,162 +77,10 @@ class TabsSw extends Component {
 
     this.state = { currentTab: 0 };
     this.handleTabChange = this.handleTabChange.bind(this);
-    this.renderDefault = this.renderDefault.bind(this);
   }
 
   handleTabChange(event, value) {
     this.setState({ currentTab: value });
-  }
-
-  getLoadedList(type) {
-    switch (type) {
-      case 'people': return this.props.peopleList;
-      case 'starships': return this.props.starshipsList;
-      case 'vehicles': return this.props.vehiclesList;
-      case 'species': return this.props.speciesList;
-      case 'planets': return this.props.planetsList;
-      case 'films': return this.props.filmsList;
-      default: return null;
-    }
-  }
-
-  getUpdateData(type) {
-    switch (type) {
-      case 'people': return this.props.updateSwPeople;
-      case 'starships': return this.props.updateSwStarships;
-      case 'vehicles': return this.props.updateSwVehicles;
-      case 'species': return this.props.updateSwSpecies;
-      case 'planets': return this.props.updateSwPlanets;
-      case 'films': return this.props.updateSwFilms;
-      default: return () => {};
-    }
-  }
-
-  getRenderer(type) {
-    switch (type) {
-      case 'people':
-        return this.rendererPeople;
-      case 'species':
-        return this.rendererSpecies;
-      case 'starships':
-        return this.rendererStarships;
-      case 'planets':
-        return this.rendererPlanets;
-      case 'vehicles':
-        return this.rendererVehicles;
-      case 'films':
-        return this.rendererFilms;
-      default:
-        return this.renderDefault;
-    }
-  }
-
-  rendererPeople(urlList, loadedData) {
-    if (!urlList || !loadedData) return null;
-    return urlList.map(url => {
-      const detail = loadedData.find(details => details.url === url);
-      if (!detail) return null;
-      const { name, birth_year } = detail;
-      const link = swapiService.generateLink(url, name, 'people');
-
-      return (
-        <ListItem key={url} to={link}>
-          {name}<br />
-          birth year: <strong>{birth_year}</strong>
-        </ListItem>
-      );
-    });
-  }
-
-  rendererSpecies(urlList, loadedData) {
-    if (!urlList || !loadedData) return null;
-    return urlList.map(url => {
-      const detail = loadedData.find(details => details.url === url);
-      if (!detail) return null;
-      const { name, classification, language } = detail;
-      const link = swapiService.generateLink(url, name, 'species');
-
-      return (
-        <ListItem key={url} to={link}>
-          {name} (classification: {classification})<br />
-          language: <strong>{language}</strong>
-        </ListItem>
-      );
-    });
-  }
-
-  rendererVehicles(urlList, loadedData) {
-    if (!urlList || !loadedData) return null;
-    return urlList.map(url => {
-      const detail = loadedData.find(details => details.url === url);
-      if (!detail) return null;
-      const { name, model } = detail;
-      const link = swapiService.generateLink(url, name, 'vehicles');
-
-      return (
-        <ListItem key={url} to={link}>
-          {name}<br />
-          model: <strong>{model}</strong>
-        </ListItem>
-      );
-    });
-  }
-
-  rendererStarships(urlList, loadedData) {
-    if (!urlList || !loadedData) return null;
-    return urlList.map(url => {
-      const detail = loadedData.find(details => details.url === url);
-      if (!detail) return null;
-      const { name, model, manufacturer } = detail;
-      const link = swapiService.generateLink(url, name, 'starships');
-
-      return (
-        <ListItem key={url} to={link}>
-          {name}<br />
-          model: <strong>{model}</strong><br />
-          manufacturer: <strong>{manufacturer}</strong>
-        </ListItem>
-      );
-    });
-  }
-
-
-  rendererPlanets(urlList, loadedData) {
-    if (!urlList || !loadedData) return null;
-    return urlList.map(url => {
-      const detail = loadedData.find(details => details.url === url);
-      if (!detail) return null;
-      const { name, population, climate } = detail;
-      const link = swapiService.generateLink(url, name, 'planets');
-
-      return (
-        <ListItem key={url} to={link}>
-          {name} (population: {population})<br />
-          climate: <strong>{climate}</strong>
-        </ListItem>
-      );
-    });
-  }
-
-  rendererFilms(urlList, loadedData) {
-    if (!urlList || !loadedData) return null;
-    return urlList.map(url => {
-      const detail = loadedData.find(details => details.url === url);
-      if (!detail) return null;
-      const { title, release_date } = detail;
-      const link = swapiService.generateLink(url, title, 'films');
-
-      return (
-        <ListItem key={url} to={link}>
-          {title}<br />
-          release date <strong>{release_date}</strong>
-        </ListItem>
-      );
-    });
-  }
-
-  renderDefault(content) {
-    return <DefaultTab>{content}</DefaultTab>;
   }
 
   render() {
@@ -222,9 +118,9 @@ class TabsSw extends Component {
                 urlList={tab.list}
                 content={tab.content}
                 isActive={currentTab === key}
-                loadedData={this.getLoadedList(tab.type)}
-                updateData={this.getUpdateData(tab.type)}
-                render={this.getRenderer(tab.type)}
+                loadedData={getLoadedList(tab.type, this.props)}
+                updateData={getUpdateData(tab.type, this.props)}
+                render={getRenderer(tab.type)}
               />
             </TabWrapper>
           ))}
