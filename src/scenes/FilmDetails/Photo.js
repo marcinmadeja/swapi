@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import FilmsImage from 'images/films';
 
-const Img = styled.img`
+export const Img = styled.img`
   width: 100%;
   display: block;
   margin-bottom: 15px;
