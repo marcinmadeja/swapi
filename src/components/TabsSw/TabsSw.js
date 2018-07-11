@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   updateSwPeople,
@@ -71,7 +72,7 @@ export const getRenderer = type => {
   }
 };
 
-class TabsSw extends Component {
+export class TabsSw extends Component {
   constructor(props) {
     super(props);
 
@@ -155,6 +156,25 @@ const actions = {
   updateSwSpecies,
   updateSwPlanets,
   updateSwFilms,
+};
+
+/* eslint-disable react/no-unused-prop-types */
+TabsSw.propTypes = {
+  classes: PropTypes.object.isRequired,
+  details: PropTypes.object.isRequired,
+  filmsList: PropTypes.array.isRequired,
+  peopleList: PropTypes.array.isRequired,
+  planetsList: PropTypes.array.isRequired,
+  speciesList: PropTypes.array.isRequired,
+  starshipsList: PropTypes.array.isRequired,
+  vehiclesList: PropTypes.array.isRequired,
+  tabsList: PropTypes.array.isRequired,
+  updateSwFilms: PropTypes.func.isRequired,
+  updateSwPeople: PropTypes.func.isRequired,
+  updateSwPlanets: PropTypes.func.isRequired,
+  updateSwSpecies: PropTypes.func.isRequired,
+  updateSwStarships: PropTypes.func.isRequired,
+  updateSwVehicles: PropTypes.func.isRequired,
 };
 
 export default compose(
