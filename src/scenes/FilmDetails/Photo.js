@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import FilmsImage from 'images/films';
 
@@ -14,6 +15,10 @@ const Photo = ({ episodeId }) => {
   return (
     <Img src={FilmsImage[`film${episodeId}`]} alt="" />
   );
+};
+
+Photo.propTypes = {
+  episodeId: PropTypes.string.isRequired,
 };
 
 export default Photo;

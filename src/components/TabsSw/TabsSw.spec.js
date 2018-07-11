@@ -1,7 +1,6 @@
 import React from 'react';
 import 'jest-styled-components';
-import Tabs, { Tab } from 'material-ui/Tabs';
-import { swapiPeople } from 'constants/testConstants';
+import { Tab } from 'material-ui/Tabs';
 import { TabsSw } from './TabsSw';
 import TabContent from './TabContent';
 

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[object Object] 1`] = `
+.c0 {
+  width: 100%;
+  display: block;
+  margin-bottom: 15px;
+}
+
+<img
+  alt=""
+  className="c0"
+  src="film-1.jpeg"
+/>
+`;
