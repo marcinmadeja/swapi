@@ -26,7 +26,7 @@ const setup = (props = {}) => {
 };
 
 
-describe('AppDrawer', () => {
+describe('RendererSpecies', () => {
   it('should render null when empty urlList or empty loadedData', () => {
     const { shallowComponent: emptyUrlList } = setup({ urlList: [], loadedData: [1] });
     const { shallowComponent: emptyLoadedData } = setup({ urlList: [1], loadedData: [] });

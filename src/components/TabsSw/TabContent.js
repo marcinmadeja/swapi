@@ -4,16 +4,16 @@ import { swapiService } from 'services';
 import { AlertStandard } from 'components/alerts';
 
 export const getNotLoadedData = (urlList, loadedData) => {
-  if (areAllArraysEmpty(urlList, loadedData)) return [];
+  if (areNotArrays(urlList, loadedData)) return [];
   return swapiService.getNotLoadedUrl(urlList, loadedData);
 };
 
-export const areAllArraysEmpty = (urlList, loadedData) => {
+export const areNotArrays = (urlList, loadedData) => {
   return !Array.isArray(urlList) || !Array.isArray(loadedData);
 };
 
 export const isUpdatingInProgress = (notLoaded, isActive) => {
-  return notLoaded.length && isActive;
+  return !!(notLoaded.length && isActive);
 };
 
 export const isNoData = (urlList) => {
@@ -32,10 +32,10 @@ const TabContent = ({
 
   if (isUpdatingInProgress(notLoaded, isActive)) {
     updateData(notLoaded);
-    return <AlertStandard msg="Loading data" progressBar />;
+    return <AlertStandard msg="Loading data" progressBar data-test="loading-data" />;
   }
 
-  if (isNoData(urlList)) return <AlertStandard msg="No data" />;
+  if (isNoData(urlList)) return <AlertStandard msg="No data" data-test="no-data" />;
 
   if (!urlList) return <Render content={content} />;
   return <Render urlList={urlList} loadedData={loadedData} />;
