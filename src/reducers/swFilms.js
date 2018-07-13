@@ -5,7 +5,7 @@ import {
 import { SW_FILMS_UPDATE } from 'actions/swUpdate';
 import { reduxUtils } from 'services';
 
-const initialState = {
+export const initialState = {
   requestData: null,
   list: [],
   pending: false,
@@ -15,7 +15,7 @@ const initialState = {
   errorsDetails: false,
 };
 
-const sortFilms = (a, b) => (a.episode_id >= b.episode_id ? 1 : -1);
+export const sortFilms = (a, b) => (a.episode_id >= b.episode_id ? 1 : -1);
 
 export default (state = initialState, action) => {
   switch (action.type) {

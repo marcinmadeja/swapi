@@ -1,6 +1,6 @@
 import { USER_REQUEST, USER_SUCCESS, USER_FAILURE, USER_LOGOUT } from 'actions/user';
 
-const initialState = {
+export const initialState = {
   user: null,
   pending: false,
   errors: false,
