@@ -10,7 +10,7 @@ export const requestUsersList = () => (
   (dispatch, getState, api) => {
     dispatch(entryRequest());
 
-    api.user.getUsersList()
+    return api.user.getUsersList()
       .then(usersList => {
         dispatch(entrySuccess(usersList));
       })
@@ -32,7 +32,7 @@ export const requestUsersListLastAdded = () => (
   (dispatch, getState, api) => {
     dispatch(entryRequestLastAdded());
 
-    api.user.getUsersList()
+    return api.user.getUsersList()
       .then(usersList => {
         dispatch(entrySuccessLastAdded(usersList));
       })
@@ -54,7 +54,7 @@ export const requestUsersListFriends = () => (
   (dispatch, getState, api) => {
     dispatch(entryRequestFriends());
 
-    api.user.getUsersList()
+    return api.user.getUsersList()
       .then(usersList => {
         dispatch(entrySuccessFriends(usersList));
       })
