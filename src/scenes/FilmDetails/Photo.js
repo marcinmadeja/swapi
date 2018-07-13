@@ -18,7 +18,10 @@ const Photo = ({ episodeId }) => {
 };
 
 Photo.propTypes = {
-  episodeId: PropTypes.string.isRequired,
+  episodeId: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]).isRequired,
 };
 
 export default Photo;

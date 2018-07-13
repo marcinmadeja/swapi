@@ -10,7 +10,7 @@ export const requestSwFilms = () => (
   (dispatch, getState, api) => {
     dispatch(entryRequest());
 
-    api.swapi.getFilms()
+    return api.swapi.getFilms()
       .then(response => {
         dispatch(entrySuccess(response));
       })
@@ -31,10 +31,9 @@ export const entryFailureSingle = () => ({ type: SW_FILMS_SINGLE_FAILURE });
 export const getFilmById = (id) => (
   (dispatch, getState, api) => {
     const filmUrl = [api.swapi.getUrlById(id, 'films')];
-
     dispatch(entryRequestSingle());
 
-    api.swapi.getDataListByUrl(filmUrl)
+    return api.swapi.getDataListByUrl(filmUrl)
       .then(response => {
         dispatch(entrySuccessSingle(response));
       })

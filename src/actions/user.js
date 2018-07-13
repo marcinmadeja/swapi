@@ -13,7 +13,7 @@ export const requestUser = () => (
   (dispatch, getState, api) => {
     dispatch(entryRequest());
 
-    api.user.signInUser()
+    return api.user.signInUser()
       .then(user => {
         dispatch(entrySuccess(user));
       })
